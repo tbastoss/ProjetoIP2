@@ -4,10 +4,12 @@ public class Dieta {
 	private int periodo;
 	private Refeicoes[][] refeicoes;
 	private int proxima;
-	public Dieta(int periodo) {
+	private int id;
+	public Dieta(int periodo, int id) {
 		this.periodo = periodo;
 		this.refeicoes = new Refeicoes[periodo][6];
 		this.proxima = 0;
+		this.id = id;
 	}
 	public void inserirRefeicoes(Refeicoes refeicoes){
 		for(int i=0;i<6;i++){
@@ -17,5 +19,8 @@ public class Dieta {
 		if(this.proxima == periodo){
 			System.out.println("Você deseja mudar sua dieta?");
 		}
+	}
+	public int getId(){
+		return id;
 	}
 }
