@@ -28,13 +28,15 @@ public class RepositorioAlimento {
 		}
 		return i;
 	}
-	public void atualizar(String nome, int pontos){
+	public boolean atualizar(String nome, int pontos){
 		int i = this.procurarIndice(nome);
 		if(i!= this.proxima){
 			this.alimentos[i].setNome(nome);
 			this.alimentos[i].setPontos(pontos);
+			return true;
 		}else{
-			System.out.println("Alimento não existe.");
+			return false;
+			//System.out.println("Alimento não existe.");
 		}
 	}
 	public Alimento procurar(String nome) {
@@ -46,15 +48,17 @@ public class RepositorioAlimento {
 		return resultado;
 	}
 	
-	public void remover(String nome) {
+	public boolean remover(String nome) {
 		int i = this.procurarIndice(nome);
 		if (i != this.proxima) {
 			this.alimentos[i] = this.alimentos[this.proxima - 1];
 			this.alimentos[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
-			System.out.println(nome + " removido.");
+			return true;
+			//System.out.println(nome + " removido.");
 		} else {
-			System.out.println("Alimento não existe.");
+			return false;
+			//System.out.println("Alimento não existe.");
 		}
 	}
 	

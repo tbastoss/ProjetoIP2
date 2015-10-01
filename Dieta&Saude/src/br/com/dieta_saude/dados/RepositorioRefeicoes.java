@@ -37,23 +37,26 @@ public class RepositorioRefeicoes {
 		}
 		return resultado;
 	}
-	public void atualizar(int pontos, int id){
+	public boolean atualizar(int pontos, int id){
 		int i = this.procurarIndice(id);
 		if(i!= this.proxima){
 			this.refeicoes[i].setPontos(pontos);
+			return true;
 		}else{
-			System.out.println("Refeição não existe.");
+			return false;
 		}
 	}
-	public void remover(int id) {
+	public boolean remover(int id) {
 		int i = this.procurarIndice(id);
 		if (i != this.proxima) {
 			this.refeicoes[i] = this.refeicoes[this.proxima - 1];
 			this.refeicoes[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
-			System.out.println("Refeição com id: "+ this.refeicoes[i].getId() + " removida.");
+			return true;
+			//System.out.println("Refeição com id: "+ this.refeicoes[i].getId() + " removida.");
 		} else {
-			System.out.println("Refeição não existe.");
+			return false;
+			//System.out.println("Refeição não existe.");
 		}
 	}
 }

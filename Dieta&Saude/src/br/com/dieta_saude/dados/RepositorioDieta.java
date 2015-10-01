@@ -38,24 +38,28 @@ public class RepositorioDieta {
 		return resultado;
 	}
 	
-	public void atualizar(int periodo, int id){
+	public boolean atualizar(int periodo, int id){
 		int i = this.procurarIndice(id);
 		if(i!= this.proxima){
-			this.dieta[i].setPeriodo(periodo);;
+			this.dieta[i].setPeriodo(periodo);
+			return true;
 		}else{
-			System.out.println("Dieta não existe.");
+			return false;
+			//System.out.println("Dieta não existe.");
 		}
 	}
 	
-	public void remover(int id) {
+	public boolean remover(int id) {
 		int i = this.procurarIndice(id);
 		if (i != this.proxima) {
 			this.dieta[i] = this.dieta[this.proxima - 1];
 			this.dieta[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
-			System.out.println("Dieta com id: "+ this.dieta[i].getId() + " removida.");
+			return true;
+			//System.out.println("Dieta com id: "+ this.dieta[i].getId() + " removida.");
 		} else {
-			System.out.println("Dieta não existe.");
+			return false;
+			//System.out.println("Dieta não existe.");
 		}
 	}
 }
