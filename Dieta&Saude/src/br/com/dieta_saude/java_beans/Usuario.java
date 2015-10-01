@@ -2,6 +2,7 @@ package br.com.dieta_saude.java_beans;
 
 public class Usuario {
 	private String nome;
+	private String senha;
 	private int id = 0;
     private char sexo;
     private double altura;
@@ -12,8 +13,9 @@ public class Usuario {
     private Dieta dieta;
     
     
-    public Usuario(String nome, char sexo, double altura, double peso, int idade,int nivelDeSedentarismo){
+    public Usuario(String nome, String senha, char sexo, double altura, double peso, int idade,int nivelDeSedentarismo){
             this.nome=nome;
+            this.senha = senha;
             this.id=id;
             this.id++;
             this.sexo=sexo;
@@ -22,6 +24,32 @@ public class Usuario {
             this.idade=idade;
             this.nivelDeSedentarismo=nivelDeSedentarismo;
             }
+    
+    public void setAltura(double altura) {
+		this.altura = altura;
+	}
+
+
+
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+
+
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+
+
+	public void setNivelDeSedentarismo(int nivelDeSedentarismo) {
+		this.nivelDeSedentarismo = nivelDeSedentarismo;
+	}
+
+	public String getNome(){
+    	return this.nome;
+    }
     
     public int getId() {
 		return id;
@@ -41,7 +69,7 @@ public class Usuario {
     
     /*
      * The method below (calcularPontos) is responsible for the calculation 
-     * of the points, through the informations given, that will be use 
+     * of the points, through the informations given, that will be used 
      * as a limit while the user is selecting the aliments. 
      * Every user have their own points. 
      */
@@ -51,10 +79,10 @@ public class Usuario {
     	double fa = 0;  //FATOR DE ATIVIDADE
     	double imc = 0; //INDICE DE MASSA CORPÓREA
     	
-    	//Calculo IMC
+    	//IMC CALCULATION
     	imc = peso/(altura*altura);
     	
-    	//Calculo da TMB e FA
+    	//TMB and FA Calculation
     	if (sexo =='f' || sexo =='F' ){
     		if(idade>=10 && idade<=18)
     			tmb = (12.2 * peso) + 746;
@@ -87,7 +115,7 @@ public class Usuario {
     			break;
     		}
     		
-    		//Calculo de pontos
+    		//Points calculations
     		pontos = (int) ((tmb * fa) / 3.6);
     		if (imc >= 25 && imc < 30)
     			pontos -= 175;
@@ -99,6 +127,7 @@ public class Usuario {
     			pontos -= 300;
     	}
     	
+    	//TMB and FA Calculation
     	else if (sexo =='m' || sexo =='M' ){
     		if(idade>=10 && idade<=18)
     			tmb = (17.5 * peso) + 651;
@@ -131,7 +160,7 @@ public class Usuario {
     			break;
     		}
     		
-    		//Calculo de pontos
+    		//Points calculations
     		pontos = (int) ((tmb * fa) / 3.6);
     		if (imc >= 25 && imc < 30)
     			pontos -= 200;
