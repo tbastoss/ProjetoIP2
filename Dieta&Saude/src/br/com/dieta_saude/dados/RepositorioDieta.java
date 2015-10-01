@@ -38,6 +38,15 @@ public class RepositorioDieta {
 		return resultado;
 	}
 	
+	public void atualizar(int periodo, int id){
+		int i = this.procurarIndice(id);
+		if(i!= this.proxima){
+			this.dieta[i].setPeriodo(periodo);;
+		}else{
+			System.out.println("Dieta não existe.");
+		}
+	}
+	
 	public void remover(int id) {
 		int i = this.procurarIndice(id);
 		if (i != this.proxima) {

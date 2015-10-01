@@ -23,4 +23,7 @@ public class Dieta {
 	public int getId(){
 		return id;
 	}
+	public void setPeriodo(int periodo){
+		this.periodo = periodo;
+	}
 }

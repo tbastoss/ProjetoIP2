@@ -42,6 +42,10 @@ public class Refeicoes {
 	public int getId() {
 		return id;
 	}
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
+	}
+	
 	
 	
 }

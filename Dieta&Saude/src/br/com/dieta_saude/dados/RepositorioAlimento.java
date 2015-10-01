@@ -28,7 +28,15 @@ public class RepositorioAlimento {
 		}
 		return i;
 	}
-	
+	public void atualizar(String nome, int pontos){
+		int i = this.procurarIndice(nome);
+		if(i!= this.proxima){
+			this.alimentos[i].setNome(nome);
+			this.alimentos[i].setPontos(pontos);
+		}else{
+			System.out.println("Alimento não existe.");
+		}
+	}
 	public Alimento procurar(String nome) {
 		int i = this.procurarIndice(nome);
 		Alimento resultado = null;

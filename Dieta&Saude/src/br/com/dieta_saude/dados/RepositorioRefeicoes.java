@@ -37,7 +37,14 @@ public class RepositorioRefeicoes {
 		}
 		return resultado;
 	}
-	
+	public void atualizar(int pontos, int id){
+		int i = this.procurarIndice(id);
+		if(i!= this.proxima){
+			this.refeicoes[i].setPontos(pontos);
+		}else{
+			System.out.println("Refeição não existe.");
+		}
+	}
 	public void remover(int id) {
 		int i = this.procurarIndice(id);
 		if (i != this.proxima) {

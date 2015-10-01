@@ -21,4 +21,13 @@ public class Alimento {
 	public int getId(){
 		return id;
 	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
+	}
+	
 }
