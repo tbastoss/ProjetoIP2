@@ -15,18 +15,22 @@ public class Usuario {
     private String codAdmin = "dieta123";
     
     public Usuario(String nome, String senha, char sexo, double altura, double peso, int idade,int nivelDeSedentarismo, String cod){
-            this.nome=nome;
-            this.senha = senha;
-            this.id=id;
-            this.id++;
-            this.sexo=sexo;
-            this.altura=altura;
-            this.peso=peso;
-            this.idade=idade;
-            this.nivelDeSedentarismo=nivelDeSedentarismo;
             if(cod.equals(this.codAdmin)){
+            	this.nome=nome;
+                this.id++;
+                this.sexo=sexo;
+                this.idade=idade;
+                this.senha = senha;
             	this.nivelUser = 1;
             }else{
+            	this.nome=nome;
+                this.senha = senha;
+                this.id++;
+                this.sexo=sexo;
+                this.altura=altura;
+                this.peso=peso;
+                this.idade=idade;
+                this.nivelDeSedentarismo=nivelDeSedentarismo;
             	this.nivelUser = 0;
             }
     }
