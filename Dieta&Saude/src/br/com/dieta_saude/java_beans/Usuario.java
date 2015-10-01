@@ -3,7 +3,7 @@ package br.com.dieta_saude.java_beans;
 public class Usuario {
 	private String nome;
 	private String senha;
-	private int nivelUser;
+	private int nivelUser = 0;
 	private int id = 0;
     private char sexo;
     private double altura;
@@ -12,46 +12,38 @@ public class Usuario {
     private int nivelDeSedentarismo; //Vai de 1 - 6, para o calculo do FA, em calcularPontos
     private int pontos;
     private Dieta dieta;
-    private String codAdmin = "dieta123";
+    private static String codAdmin = "dieta123";
     
-    public Usuario(String nome, String senha, char sexo, double altura, double peso, int idade,int nivelDeSedentarismo, String cod){
-            if(cod.equals(this.codAdmin)){
-            	this.nome=nome;
-                this.id++;
-                this.sexo=sexo;
-                this.idade=idade;
-                this.senha = senha;
-            	this.nivelUser = 1;
-            }else{
-            	this.nome=nome;
-                this.senha = senha;
-                this.id++;
-                this.sexo=sexo;
-                this.altura=altura;
-                this.peso=peso;
-                this.idade=idade;
-                this.nivelDeSedentarismo=nivelDeSedentarismo;
-            	this.nivelUser = 0;
-            }
+    public Usuario(){
+    }
+    
+    public void cadastrarAdm(String nome, String senha){
+    	this.nome = nome;
+    	this.senha = senha;
+    }
+    
+    public void cadastroUsuario(String nome, String senha, char sexo, double altura, double peso, int idade, int nivelDeSedentarismo){
+    	this.nome = nome;
+    	this.senha = senha;
+    	this.sexo = sexo;
+    	this.altura = altura;
+    	this.peso = peso;
+    	this.idade = idade;
+    	this.nivelDeSedentarismo = nivelDeSedentarismo;
+    	this.id++;
     }
     
     public void setAltura(double altura) {
 		this.altura = altura;
 	}
 
-
-
 	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 
-
-
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-
-
 
 	public void setNivelDeSedentarismo(int nivelDeSedentarismo) {
 		this.nivelDeSedentarismo = nivelDeSedentarismo;
@@ -77,7 +69,15 @@ public class Usuario {
 		this.dieta = dieta;
 	}
     
-    /*
+    public String getSenha() {
+		return senha;
+	}
+    
+	public static String getCodAdmin() {
+		return codAdmin;
+	}
+
+	/*
      * The method below (calcularPontos) is responsible for the calculation 
      * of the points, through the informations given, that will be used 
      * as a limit while the user is selecting the aliments. 
