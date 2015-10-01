@@ -4,12 +4,12 @@ public class Dieta {
 	private int periodo;
 	private Refeicoes[][] refeicoes;
 	private int proxima;
-	private int id;
+	private int id = 0;
 	public Dieta(int periodo, int id) {
 		this.periodo = periodo;
 		this.refeicoes = new Refeicoes[periodo][6];
 		this.proxima = 0;
-		this.id = id;
+		this.id++;
 	}
 	public void inserirRefeicoes(Refeicoes refeicoes){
 		for(int i=0;i<6;i++){

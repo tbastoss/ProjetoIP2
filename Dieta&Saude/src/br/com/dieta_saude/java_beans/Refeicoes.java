@@ -1,7 +1,7 @@
 package br.com.dieta_saude.java_beans;
 
 public class Refeicoes {
-	private int id;
+	private int id = 0;
 	private Alimento[] cafeDaManha;
 	private Alimento[] lancheM;
 	private Alimento[] almoco;
@@ -9,7 +9,7 @@ public class Refeicoes {
 	private Alimento[] jantar;
 	private Alimento[] lancheN;
 	private int pontos = 0;
-	public Refeicoes(int id,Alimento[] cafeDaManha, Alimento[] lancheM, Alimento[] almoco, Alimento[] lancheT,
+	public Refeicoes(Alimento[] cafeDaManha, Alimento[] lancheM, Alimento[] almoco, Alimento[] lancheT,
 			Alimento[] jantar, Alimento[] lancheN) {
 		this.cafeDaManha = cafeDaManha;
 		this.lancheM = lancheM;
@@ -17,7 +17,7 @@ public class Refeicoes {
 		this.lancheT = lancheT;
 		this.jantar = jantar;
 		this.lancheN = lancheN;
-		this.id = id;
+		this.id++;
 	}
 	public void calcularPontos(){
 		for(int i=0;i<this.cafeDaManha.length;i++){
