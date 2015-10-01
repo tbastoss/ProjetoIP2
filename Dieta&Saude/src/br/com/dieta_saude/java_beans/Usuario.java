@@ -3,6 +3,7 @@ package br.com.dieta_saude.java_beans;
 public class Usuario {
 	private String nome;
 	private String senha;
+	private int nivelUser;
 	private int id = 0;
     private char sexo;
     private double altura;
@@ -11,9 +12,9 @@ public class Usuario {
     private int nivelDeSedentarismo; //Vai de 1 - 6, para o calculo do FA, em calcularPontos
     private int pontos;
     private Dieta dieta;
+    private String codAdmin = "dieta123";
     
-    
-    public Usuario(String nome, String senha, char sexo, double altura, double peso, int idade,int nivelDeSedentarismo){
+    public Usuario(String nome, String senha, char sexo, double altura, double peso, int idade,int nivelDeSedentarismo, String cod){
             this.nome=nome;
             this.senha = senha;
             this.id=id;
@@ -23,7 +24,12 @@ public class Usuario {
             this.peso=peso;
             this.idade=idade;
             this.nivelDeSedentarismo=nivelDeSedentarismo;
+            if(cod.equals(this.codAdmin)){
+            	this.nivelUser = 1;
+            }else{
+            	this.nivelUser = 0;
             }
+    }
     
     public void setAltura(double altura) {
 		this.altura = altura;
