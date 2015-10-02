@@ -1,5 +1,7 @@
 package br.com.dieta_saude.dados;
 
+import java.util.Arrays;
+
 import br.com.dieta_saude.java_beans.Alimento;
 
 public class RepositorioAlimento {
@@ -59,6 +61,12 @@ public class RepositorioAlimento {
 		} else {
 			return false;
 			//System.out.println("Alimento não existe.");
+		}
+	}
+
+	public void mostrarAlimentos(){
+		for(int i=0;i<this.proxima;i++){
+			System.out.println("Nome: "+alimentos[i].getNome()+". Pontos: "+ alimentos[i].getPontos()+ ".");
 		}
 	}
 	

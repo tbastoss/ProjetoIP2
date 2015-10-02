@@ -49,8 +49,8 @@ public class Principal {
 						Usuario usuario = new Usuario();
 						usuario.cadastroUsuario(nome, senha, sexo, altura, peso, idade, nivelDeSedentarismo, 0);
 						usuario.calcularPontos();
-						System.out.println(usuario.toString());
 						repositorio.cadastrar(usuario);
+						opcao = null;
 						quest2 = true;
 					}else if(codigo.equals(Usuario.getCodAdmin())){
 						System.out.println("Nome:");
@@ -59,21 +59,24 @@ public class Principal {
 						String senha = scr.nextLine();
 						Usuario admin = new Usuario();
 						admin.cadastrarAdm(nome, senha, 1);
-						System.out.println(admin.toString());
 						repositorio.cadastrar(admin);
+						opcao = null;
 						quest2 = true;
 					}else{
 						System.out.println("Comando invalido!");
-						quest2 = false;
 					}
 				}
+				quest2 = false;
 			}else if(opcao.equals("logar")){
 				System.out.println("Insira seu nome:");
 				String nome = scr.nextLine();
 				System.out.println("Insira sua senha:");
 				String senha = scr.nextLine();
+				
 				if(controlador.verificaExistenciaDeUsuario(nome, senha, repositorio)){
-					if(controlador.verificaTipoDeUsuario(repositorio.procurar(nome, senha))){
+					Usuario usuario = repositorio.procurar(nome, senha);
+					opcao = null;
+					if(controlador.verificaTipoDeUsuario(usuario)){
 						while(!quest3){
 							System.out.println("Você é adm! O que deseja? OBS: Para mostrar os comandos disponíveis, digite !comandos");
 							String comando = scr.nextLine();
@@ -85,29 +88,31 @@ public class Principal {
 								System.out.println("Pontos do alimento:");
 								int pontosAlimento = scr.nextInt();
 								controladorAlimento.adicionaAlimentos(nomeAlimento, pontosAlimento, repositorioAlimento);
-								quest3= true;
 							}else if(comando.equals("!atualizarAlimento")){
 								System.out.println("Nome do alimento:");
 								String nomeAlimento = scr.nextLine();
 								System.out.println("Pontos do alimento:");
 								int pontosAlimento = scr.nextInt();
 								repositorioAlimento.atualizar(nomeAlimento, pontosAlimento);
-								quest3= true;
 							}else if(comando.equals("!removerAlimento")){
 								System.out.println("Nome do alimento:");
 								String nomeAlimento = scr.nextLine();
 								repositorioAlimento.remover(nomeAlimento);
+							}else if(comando.equals("!sair")){
+								System.out.println("Obrigado!");
 								quest3= true;
 							}else{
-								System.out.println("Insira o comando correto:");
-								quest3 = false;
+								System.out.println("Comando inválido!");
 							}
 						}
+						quest3 = false;
 					}else{
-						System.out.println("Você é comum!");
+						System.out.println("Cadastre sua dieta! Você tem "+usuario.getPontos()+"pontos disponíveis!");
+						repositorioAlimento.mostrarAlimentos();
 					}
 				}else{
 					System.out.println("Usuario não existe!");
+					opcao = null;
 				}
 			}else if(opcao.equals("sair")){
 				System.out.println("Volte sempre!");
