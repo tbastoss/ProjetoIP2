@@ -24,6 +24,7 @@ public class Principal {
 		RepositorioAlimento repositorioAlimento = new RepositorioAlimento(50);
 		ControladorDeUsuario controlador = new ControladorDeUsuario();
 		ControladorDeAlimentos controladorAlimento = new ControladorDeAlimentos();
+		try{
 		while(!quest){
 			System.out.println("Você deseja cadastrar ou logar?");
 			String opcao = scr.nextLine();
@@ -78,6 +79,7 @@ public class Principal {
 					opcao = null;
 					if(controlador.verificaTipoDeUsuario(usuario)){
 						while(!quest3){
+							
 							System.out.println("Você é adm! O que deseja? OBS: Para mostrar os comandos disponíveis, digite !comandos");
 							String comando = scr.nextLine();
 							if(comando.equals("!comandos")){
@@ -93,17 +95,24 @@ public class Principal {
 								String nomeAlimento = scr.nextLine();
 								System.out.println("Pontos do alimento:");
 								int pontosAlimento = scr.nextInt();
-								repositorioAlimento.atualizar(nomeAlimento, pontosAlimento);
+								if(controladorAlimento.verificaExistenciaDeAlimento(nomeAlimento, repositorioAlimento)){
+									repositorioAlimento.atualizar(nomeAlimento, pontosAlimento);
+								}else{
+									System.out.println("Alimento não existe!");
+								}
 							}else if(comando.equals("!removerAlimento")){
 								System.out.println("Nome do alimento:");
 								String nomeAlimento = scr.nextLine();
-								repositorioAlimento.remover(nomeAlimento);
+								if(controladorAlimento.verificaExistenciaDeAlimento(nomeAlimento, repositorioAlimento)){
+									repositorioAlimento.remover(nomeAlimento);
+								}else{
+									System.out.println("Alimento não existe!");
+								}
 							}else if(comando.equals("!sair")){
 								System.out.println("Obrigado!");
 								quest3= true;
-							}else{
-								System.out.println("Comando inválido!");
 							}
+							
 						}
 						quest3 = false;
 					}else{
@@ -119,5 +128,9 @@ public class Principal {
 				quest = true;
 			}
 		}
+		}catch(Exception e){ 
+	    	System.out.println("Comando inválido! Tente novamente!");
+	    }
 	}
+	 
 }
