@@ -23,12 +23,12 @@ public class ControladorDeAlimentos {
 	}
 	
 	
-	public boolean adicionaAlimentos(String nome, int pontos, int id, 
+	public boolean adicionaAlimentos(String nome, int pontos, 
 			RepositorioAlimento repositorio)
 	{
 		boolean resultado = false;
 		boolean verificador = verificaExistenciaDeAlimento(nome, repositorio);
-		Alimento teste = new Alimento(nome, pontos, id);
+		Alimento teste = new Alimento(nome, pontos);
 	
 		if (verificador == false){
 			repositorio.cadastrar(teste);

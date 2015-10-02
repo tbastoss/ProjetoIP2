@@ -21,6 +21,7 @@ public class Usuario {
     	this.nome = nome;
     	this.senha = senha;
     	this.nivelUser = nivelUser;
+    	this.id++;
     }
     
     public void cadastroUsuario(String nome, String senha, char sexo, double altura, double peso, int idade, int nivelDeSedentarismo, int nivelUser){
