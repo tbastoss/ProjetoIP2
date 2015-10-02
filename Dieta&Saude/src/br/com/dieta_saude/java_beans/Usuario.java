@@ -3,7 +3,7 @@ package br.com.dieta_saude.java_beans;
 public class Usuario {
 	private String nome;
 	private String senha;
-	private int nivelUser = 0;
+	private int nivelUser;
 	private int id = 0;
     private char sexo;
     private double altura;
@@ -17,12 +17,13 @@ public class Usuario {
     public Usuario(){
     }
     
-    public void cadastrarAdm(String nome, String senha){
+    public void cadastrarAdm(String nome, String senha, int nivelUser){
     	this.nome = nome;
     	this.senha = senha;
+    	this.nivelUser = nivelUser;
     }
     
-    public void cadastroUsuario(String nome, String senha, char sexo, double altura, double peso, int idade, int nivelDeSedentarismo){
+    public void cadastroUsuario(String nome, String senha, char sexo, double altura, double peso, int idade, int nivelDeSedentarismo, int nivelUser){
     	this.nome = nome;
     	this.senha = senha;
     	this.sexo = sexo;
@@ -31,6 +32,7 @@ public class Usuario {
     	this.idade = idade;
     	this.nivelDeSedentarismo = nivelDeSedentarismo;
     	this.id++;
+    	this.nivelUser = nivelUser;
     }
     
     public void setAltura(double altura) {
@@ -76,6 +78,10 @@ public class Usuario {
 	public static String getCodAdmin() {
 		return codAdmin;
 	}
+	
+	public int getNivelUser() {
+		return nivelUser;
+	}
 
 	/*
      * The method below (calcularPontos) is responsible for the calculation 
@@ -83,27 +89,27 @@ public class Usuario {
      * as a limit while the user is selecting the aliments. 
      * Every user have their own points. 
      */
-    public int calcularPontos(char sexo, double altura, double peso, int idade,int nivelDeSedentarismo){
+    public void calcularPontos(){
     	int pontos = 0;
     	double tmb = 0; //TAIXA DE METABOLISMO BASAL
     	double fa = 0;  //FATOR DE ATIVIDADE
     	double imc = 0; //INDICE DE MASSA CORPÓREA
     	
     	//IMC CALCULATION
-    	imc = peso/(altura*altura);
+    	imc = this.peso/(this.altura*this.altura);
     	
     	//TMB and FA Calculation
-    	if (sexo =='f' || sexo =='F' ){
-    		if(idade>=10 && idade<=18)
+    	if (this.sexo =='f' || this.sexo =='F' ){
+    		if(this.idade>=10 && this.idade<=18)
     			tmb = (12.2 * peso) + 746;
-    		else if (idade>18 && idade<=30)
+    		else if (this.idade>18 && this.idade<=30)
     			tmb = (14.7 * peso) + 496;
-    		else if (idade>30 && idade<=60)
-    			tmb = (8.7 * peso) + 829;
+    		else if (this.idade>30 && this.idade<=60)
+    			tmb = (8.7 * this.peso) + 829;
     		else
-    			tmb = (10.5 * peso) + 596;
+    			tmb = (10.5 * this.peso) + 596;
     		
-    		switch (nivelDeSedentarismo)
+    		switch (this.nivelDeSedentarismo)
     		{
     		case 1:
     			fa = 1.2;
@@ -138,17 +144,17 @@ public class Usuario {
     	}
     	
     	//TMB and FA Calculation
-    	else if (sexo =='m' || sexo =='M' ){
-    		if(idade>=10 && idade<=18)
-    			tmb = (17.5 * peso) + 651;
-    		else if (idade>18 && idade<=30)
-    			tmb = (15.3 * peso) + 679;
-    		else if (idade>30 && idade<=60)
-    			tmb = (8.7 * peso) + 879;
+    	else if (this.sexo =='m' || this.sexo =='M' ){
+    		if(this.idade>=10 && this.idade<=18)
+    			tmb = (17.5 * this.peso) + 651;
+    		else if (this.idade>18 && this.idade<=30)
+    			tmb = (15.3 * this.peso) + 679;
+    		else if (this.idade>30 && this.idade<=60)
+    			tmb = (8.7 * this.peso) + 879;
     		else
-    			tmb = (13.5 * peso)  + 487;
+    			tmb = (13.5 * this.peso)  + 487;
     		
-    		switch (nivelDeSedentarismo)
+    		switch (this.nivelDeSedentarismo)
     		{
     		case 1:
     			fa = 1.2;
@@ -182,7 +188,14 @@ public class Usuario {
     			pontos -= 325;
     	}    	
     	
-    	return pontos;
-    }    
+    	this.pontos = pontos;
+    }
 
+	@Override
+	public String toString() {
+		return "Usuario [nome=" + nome + ", senha=" + senha + ", nivelUser=" + nivelUser + ", id=" + id + ", sexo="
+				+ sexo + ", altura=" + altura + ", peso=" + peso + ", idade=" + idade + ", nivelDeSedentarismo="
+				+ nivelDeSedentarismo + ", pontos=" + pontos + ", dieta=" + dieta + "]";
+	}    
+    
 }

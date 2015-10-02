@@ -17,11 +17,11 @@ public class RepositorioUsuario {
 		this.proximo++;
 	}
 	
-	private int procurarIndice(String nome){
+	private int procurarIndice(String nome, String senha){
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proximo)){
-			if (nome.equals(this.usuarios[i].getNome()))
+			if (nome.equals(this.usuarios[i].getNome()) && senha.equals(this.usuarios[i].getSenha()))
 				achou = true;
 			else 
 				i++;
@@ -33,9 +33,9 @@ public class RepositorioUsuario {
 	 * Nao muda o nome, pois eh o nome de usuário e ja vai ser feita a verificação, pelo controlador de
 	 * usuários, para saber se o nome ja foi usado.  
 	 */
-	public boolean atualizar(String nome, double altura, double peso, int idade, int nivelDeSedentarismo){
+	public boolean atualizar(String nome, String senha, double altura, double peso, int idade, int nivelDeSedentarismo){
 		boolean retorno = false;
-		int i = this.procurarIndice(nome);
+		int i = this.procurarIndice(nome, senha);
 		if (i != this.proximo){
 			this.usuarios[i].setAltura(altura);
 			this.usuarios[i].setPeso(peso);
@@ -46,8 +46,8 @@ public class RepositorioUsuario {
 		return retorno;
 	}
 	
-	public Usuario procurar(String nome){
-		int i = this.procurarIndice(nome);
+	public Usuario procurar(String nome, String senha){
+		int i = this.procurarIndice(nome, senha);
 		Usuario resultado = null;
 		if (i != this.proximo){
 			resultado = this.usuarios[i];			
@@ -56,8 +56,8 @@ public class RepositorioUsuario {
 		
 	}
 	
-	public boolean remover(String nome){
-		int i = this.procurarIndice(nome);
+	public boolean remover(String nome, String senha){
+		int i = this.procurarIndice(nome, senha);
 		boolean resultado = false;
 		if (i != this.proximo){
 			this.usuarios[i] = this.usuarios[this.proximo - 1];

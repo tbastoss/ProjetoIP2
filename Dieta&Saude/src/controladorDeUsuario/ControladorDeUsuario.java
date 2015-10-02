@@ -5,28 +5,27 @@ import br.com.dieta_saude.java_beans.Usuario;
 
 public class ControladorDeUsuario {
 	
-	private Usuario usuario;
+	//private Usuario usuario;
 	
-	public ControladorDeUsuario(Usuario usuario)
+	public ControladorDeUsuario()
 	{
-		this.usuario = usuario;
+		//this.usuario = usuario;
 	}
 
-	public boolean verificaTipoDeUsuario(String senha)
+	public boolean verificaTipoDeUsuario(Usuario usuario)
 	{
-		boolean resultado = false;
-		Usuario teste = new Usuario();
-		if (senha.equals(teste.getCodAdmin()))
-			resultado = true;
-		
-		return resultado;
+		if (usuario.getNivelUser() == 1){
+			return true;
+		}else{
+			return false;
+		}
 		
 	}
 	
-	public boolean verificaExistenciaDeUsuario(String nome, RepositorioUsuario repositorio)
+	public boolean verificaExistenciaDeUsuario(String nome,String senha, RepositorioUsuario repositorio)
 	{
 		boolean resultado = false;
-		if (repositorio.procurar(nome) != null)
+		if (repositorio.procurar(nome, senha) != null)
 			resultado = true;
 		
 		return resultado;
