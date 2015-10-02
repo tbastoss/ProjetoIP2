@@ -3,11 +3,11 @@ package br.com.dieta_saude.java_beans;
 public class Alimento {
 	private String nome;
 	private int pontos;
-	private int id = 0;
+	private int id;
 	public Alimento(String nome, int pontos, int id) {
 		this.nome = nome;
 		this.pontos = pontos;
-		this.id++;
+		this.id = id;
 	}
 
 	public String getNome() {
