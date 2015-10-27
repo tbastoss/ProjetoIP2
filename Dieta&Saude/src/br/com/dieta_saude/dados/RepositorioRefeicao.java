@@ -1,17 +1,17 @@
 package br.com.dieta_saude.dados;
 
-import br.com.dieta_saude.java_beans.Refeicoes;
+import br.com.dieta_saude.java_beans.Refeicao;
 
-public class RepositorioRefeicoes {
-	private Refeicoes[] refeicoes;
+public class RepositorioRefeicao {
+	private Refeicao[] refeicoes;
 	private int proxima;
 	
-	public RepositorioRefeicoes(int tamanho) {
-		this.refeicoes = new Refeicoes[tamanho];
+	public RepositorioRefeicao(int tamanho) {
+		this.refeicoes = new Refeicao[tamanho];
 		this.proxima = 0;
 	}
 	
-	public void cadastrar(Refeicoes refeicoes) {
+	public void cadastrar(Refeicao refeicoes) {
 		this.refeicoes[this.proxima] = refeicoes;
 		this.proxima = this.proxima + 1;
 	}
@@ -29,9 +29,9 @@ public class RepositorioRefeicoes {
 		return i;
 	}
 	
-	public Refeicoes procurar(int id) {
+	public Refeicao procurar(int id) {
 		int i = this.procurarIndice(id);
-		Refeicoes resultado = null;
+		Refeicao resultado = null;
 		if (i != this.proxima) {
 			resultado = this.refeicoes[i];
 		}

@@ -2,18 +2,19 @@ package br.com.dieta_saude.java_beans;
 
 public class Dieta {
 	private int periodo;
-	private Refeicoes[][] refeicoes;
+	private Refeicao[][] refeicao;
+	private int qtdRefeicao;
 	private int proxima;
 	private int id = 0;
-	public Dieta(int periodo, int id) {
+	public Dieta(int periodo, int qtdRefeicao, int id) {
 		this.periodo = periodo;
-		this.refeicoes = new Refeicoes[periodo][6];
+		this.refeicao = new Refeicao[qtdRefeicao][periodo];
 		this.proxima = 0;
 		this.id++;
 	}
-	public void inserirRefeicoes(Refeicoes refeicoes){
+	public void inserirRefeicao(Refeicao refeicoes){
 		for(int i=0;i<6;i++){
-			this.refeicoes[this.proxima][i] = refeicoes;
+			this.refeicao[this.proxima][i] = refeicoes;
 		}
 		this.proxima = this.proxima + 1;
 		if(this.proxima == periodo){
