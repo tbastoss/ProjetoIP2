@@ -6,6 +6,8 @@ import br.com.dieta_saude.dados.RepositorioAlimento;
 import br.com.dieta_saude.dados.RepositorioUsuario;
 import br.com.dieta_saude.java_beans.Alimento;
 import br.com.dieta_saude.java_beans.Usuario;
+import br.com.dieta_saude.java_beans.UsuarioAdm;
+import br.com.dieta_saude.java_beans.UsuarioComum;
 import controladorDeUsuario.ControladorDeAlimentos;
 import controladorDeUsuario.ControladorDeUsuario;
 
@@ -26,7 +28,7 @@ public class Principal {
 		ControladorDeAlimentos controladorAlimento = new ControladorDeAlimentos();
 		try{
 		while(!quest){
-			System.out.println("Você deseja cadastrar ou logar?");
+			System.out.println("Você deseja cadastrar, logar ou sair?");
 			String opcao = scr.nextLine();
 			if(opcao.equals("cadastrar")){
 				while(!quest2){
@@ -47,7 +49,7 @@ public class Principal {
 						int idade = scr.nextInt();
 						System.out.println("Nivel de sedentarismo:");
 						int nivelDeSedentarismo = scr.nextInt();
-						Usuario usuario = new Usuario();
+						UsuarioComum usuario = new UsuarioComum();
 						usuario.cadastroUsuario(nome, senha, sexo, altura, peso, idade, nivelDeSedentarismo, 0);
 						usuario.calcularPontos();
 						repositorio.cadastrar(usuario);
@@ -58,7 +60,7 @@ public class Principal {
 						String nome = scr.nextLine();
 						System.out.println("Senha:");
 						String senha = scr.nextLine();
-						Usuario admin = new Usuario();
+						UsuarioAdm admin = new UsuarioAdm();
 						admin.cadastrarAdm(nome, senha, 1);
 						repositorio.cadastrar(admin);
 						opcao = null;
@@ -83,7 +85,7 @@ public class Principal {
 							System.out.println("Você é adm! O que deseja? OBS: Para mostrar os comandos disponíveis, digite !comandos");
 							String comando = scr.nextLine();
 							if(comando.equals("!comandos")){
-								System.out.println("!cadastrarAlimento, !atualizarAlimento, !removerAlimento");
+								System.out.println("!cadastrarAlimento, !atualizarAlimento, !removerAlimento, !sair");
 							}else if(comando.equals("!cadastrarAlimento")){
 								System.out.println("Nome do alimento:");
 								String nomeAlimento = scr.nextLine();
