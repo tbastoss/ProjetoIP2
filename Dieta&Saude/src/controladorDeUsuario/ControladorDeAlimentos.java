@@ -13,15 +13,17 @@ public class ControladorDeAlimentos {
 	}
 	
 	// ISugestao
-	// public boolean verificaExistenciaDeAlimento(Alimento alimento, RepositorioAlimento repositorio)
-	//	{
-	//		boolean resultado = false;
-	//		if (repositorio.procurar(alimento.getNome()) != null)
-	//			resultado = true;
-	//		
-	//		return resultado;
-	//	}
+	 public boolean verificaExistenciaDeAlimento(Alimento alimento, RepositorioAlimento repositorio)
+		{
+			boolean resultado = false;
+			if (repositorio.procurar(alimento.getNome()) != null)
+				resultado = true;
+			
+			return resultado;
+		}
 	// FSugestao
+	
+	/*
 	public boolean verificaExistenciaDeAlimento(String nome, RepositorioAlimento repositorio)
 	{
 		boolean resultado = false;
@@ -30,17 +32,18 @@ public class ControladorDeAlimentos {
 		
 		return resultado;
 	}
+	*/
 	
-	
-	public boolean adicionaAlimentos(String nome, int pontos, 
+	public boolean adicionaAlimentos(Alimento alimento, 
 			RepositorioAlimento repositorio)
 	{
 		boolean resultado = false;
-		boolean verificador = verificaExistenciaDeAlimento(nome, repositorio);
-		Alimento teste = new Alimento(nome, pontos);
+		boolean verificador = verificaExistenciaDeAlimento(alimento, repositorio);
+		
+		// Alimento teste = new Alimento(nome, pontos);
 	
 		if (verificador == false){
-			repositorio.cadastrar(teste);
+			repositorio.cadastrar(alimento);
 			resultado = true;
 		}
 		

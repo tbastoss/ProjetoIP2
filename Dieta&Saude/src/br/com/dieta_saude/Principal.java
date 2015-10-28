@@ -91,28 +91,29 @@ public class Principal {
 								String nomeAlimento = scr.nextLine();
 								System.out.println("Pontos do alimento:");
 								int pontosAlimento = scr.nextInt();
-								controladorAlimento.adicionaAlimentos(nomeAlimento, pontosAlimento, repositorioAlimento);
+								Alimento aCadastrar = new Alimento(nomeAlimento, pontosAlimento);
+								controladorAlimento.adicionaAlimentos(aCadastrar, repositorioAlimento);
 							}else if(comando.equals("!atualizarAlimento")){
 								System.out.println("Nome do alimento:");
 								String nomeAlimento = scr.nextLine();
 								System.out.println("Pontos do alimento:");
 								int pontosAlimento = scr.nextInt();
 								// ISugestao
-								// Alimento atualizador = new Alimento(nomeAlimento, pontosAlimento);
+								Alimento atualizador = new Alimento(nomeAlimento, pontosAlimento);
 								// FSugestao
-								if(controladorAlimento.verificaExistenciaDeAlimento(nomeAlimento, repositorioAlimento)){
+								// if(controladorAlimento.verificaExistenciaDeAlimento(nomeAlimento, repositorioAlimento)){
 									// ISugestao
-									// if(controladorAlimento.verificaExistenciaDeAlimento(atualizador, repositorioAlimento)){
+								if(controladorAlimento.verificaExistenciaDeAlimento(atualizador, repositorioAlimento)){
 									// FSugestao
-									
-									repositorioAlimento.atualizar(nomeAlimento, pontosAlimento);
+									repositorioAlimento.atualizar(atualizador);
 								}else{
 									System.out.println("Alimento não existe!");
 								}
 							}else if(comando.equals("!removerAlimento")){
 								System.out.println("Nome do alimento:");
 								String nomeAlimento = scr.nextLine();
-								if(controladorAlimento.verificaExistenciaDeAlimento(nomeAlimento, repositorioAlimento)){
+								Alimento aRemover = new Alimento(nomeAlimento, 0);
+								if(controladorAlimento.verificaExistenciaDeAlimento(aRemover, repositorioAlimento)){
 									repositorioAlimento.remover(nomeAlimento);
 								}else{
 									System.out.println("Alimento não existe!");

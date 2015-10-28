@@ -2,7 +2,11 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Usuario;
 
-public class RepositorioUsuario implements InterfaceRepositorio {
+<<<<<<< HEAD
+// public class RepositorioUsuario implements InterfaceRepositorio {
+=======
+public class RepositorioUsuario implements Repositorio {
+>>>>>>> branch 'master' of https://github.com/wallsmanBR/ProjetoIP2.git
 	private Usuario[] usuarios;
 	private int proximo;
 	
@@ -11,13 +15,21 @@ public class RepositorioUsuario implements InterfaceRepositorio {
 		this.proximo = 0;
 		
 	}
+<<<<<<< HEAD
 
 	/*
+=======
+	@Override
+>>>>>>> branch 'master' of https://github.com/wallsmanBR/ProjetoIP2.git
 	public void cadastrar (Usuario usuario){
 		this.usuarios[this.proximo] = usuario;
 		this.proximo++;
 	}
+<<<<<<< HEAD
 	*/
+=======
+	@Override
+>>>>>>> branch 'master' of https://github.com/wallsmanBR/ProjetoIP2.git
 	private int procurarIndice(String nome, String senha){
 		int i = 0;
 		boolean achou = false;
@@ -34,6 +46,7 @@ public class RepositorioUsuario implements InterfaceRepositorio {
 	 * Nao muda o nome, pois eh o nome de usuário e ja vai ser feita a verificação, pelo controlador de
 	 * usuários, para saber se o nome ja foi usado.  
 	 */
+	@Override
 	public boolean atualizar(String nome, String senha, double altura, double peso, int idade, int nivelDeSedentarismo){
 		boolean retorno = false;
 		int i = this.procurarIndice(nome, senha);
@@ -46,7 +59,7 @@ public class RepositorioUsuario implements InterfaceRepositorio {
 		}
 		return retorno;
 	}
-	
+	@Override
 	public Usuario procurar(String nome, String senha){
 		int i = this.procurarIndice(nome, senha);
 		Usuario resultado = null;
@@ -56,7 +69,7 @@ public class RepositorioUsuario implements InterfaceRepositorio {
 		return resultado;
 		
 	}
-	
+	@Override
 	public boolean remover(String nome, String senha){
 		int i = this.procurarIndice(nome, senha);
 		boolean resultado = false;
@@ -70,6 +83,7 @@ public class RepositorioUsuario implements InterfaceRepositorio {
 		
 	}
 
+<<<<<<< HEAD
 	
 	public void cadastrar(Object objeto) {
 		Usuario usuario = (Usuario) objeto;
@@ -77,7 +91,7 @@ public class RepositorioUsuario implements InterfaceRepositorio {
 		this.proximo++;
 		
 	}
-
+/*
 	@Override
 	int procurarIndice() {
 		// TODO Auto-generated method stub
@@ -101,5 +115,7 @@ public class RepositorioUsuario implements InterfaceRepositorio {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+=======
+>>>>>>> branch 'master' of https://github.com/wallsmanBR/ProjetoIP2.git
+*/
 }

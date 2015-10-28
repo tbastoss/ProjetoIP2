@@ -62,7 +62,8 @@ public class RepositorioAlimento implements InterfaceRepositorio {
 		return resultado;
 	}
 	
-	public boolean remover(String nome) {
+	public boolean remover(Object objeto) {
+		String nome = (String) objeto;
 		int i = this.procurarIndice(nome);
 		if (i != this.proxima) {
 			this.alimentos[i] = this.alimentos[this.proxima - 1];

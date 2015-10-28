@@ -6,11 +6,9 @@ public interface InterfaceRepositorio {
 	
 	void cadastrar ( Object objeto );
 	
-	// int procurarIndice();
-	
 	boolean atualizar( Object objeto);
 	
 	Object procurar(Object objeto);
 	
-	boolean remover();
+	boolean remover(Object objeto);
 }

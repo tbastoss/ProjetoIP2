@@ -56,7 +56,8 @@ public class RepositorioDieta implements InterfaceRepositorio {
 		}
 	}
 	
-	public boolean remover(int id) {
+	public boolean remover(Object objeto) {
+		int id = (int) objeto;
 		int i = this.procurarIndice(id);
 		if (i != this.proxima) {
 			this.dieta[i] = this.dieta[this.proxima - 1];

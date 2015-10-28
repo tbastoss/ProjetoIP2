@@ -52,7 +52,9 @@ public class RepositorioRefeicao implements InterfaceRepositorio {
 			return false;
 		}
 	}
-	public boolean remover(int id) {
+	
+	public boolean remover(Object objeto) {
+		int id = (int) objeto;
 		int i = this.procurarIndice(id);
 		if (i != this.proxima) {
 			this.refeicoes[i] = this.refeicoes[this.proxima - 1];
