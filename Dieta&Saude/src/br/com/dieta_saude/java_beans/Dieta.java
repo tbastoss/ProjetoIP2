@@ -13,7 +13,7 @@ public class Dieta {
 		this.id++;
 	}
 	public void inserirRefeicao(Refeicao refeicoes){
-		for(int i=0;i<6;i++){
+		for(int i=0; i<6 ;i++){
 			this.refeicao[this.proxima][i] = refeicoes;
 		}
 		this.proxima = this.proxima + 1;
@@ -26,5 +26,10 @@ public class Dieta {
 	}
 	public void setPeriodo(int periodo){
 		this.periodo = periodo;
+	}
+	
+	public int getPeriodo()
+	{
+		return this.periodo;
 	}
 }

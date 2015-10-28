@@ -25,4 +25,8 @@ public class Refeicao {
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
 	}
+	
+	public int getPontos(){
+		return this.pontos;
+	}
 }

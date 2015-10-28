@@ -97,7 +97,14 @@ public class Principal {
 								String nomeAlimento = scr.nextLine();
 								System.out.println("Pontos do alimento:");
 								int pontosAlimento = scr.nextInt();
+								// ISugestao
+								// Alimento atualizador = new Alimento(nomeAlimento, pontosAlimento);
+								// FSugestao
 								if(controladorAlimento.verificaExistenciaDeAlimento(nomeAlimento, repositorioAlimento)){
+									// ISugestao
+									// if(controladorAlimento.verificaExistenciaDeAlimento(atualizador, repositorioAlimento)){
+									// FSugestao
+									
 									repositorioAlimento.atualizar(nomeAlimento, pontosAlimento);
 								}else{
 									System.out.println("Alimento não existe!");

@@ -2,7 +2,7 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Usuario;
 
-public class RepositorioUsuario implements Repositorio {
+public class RepositorioUsuario implements InterfaceRepositorio {
 	private Usuario[] usuarios;
 	private int proximo;
 	

@@ -12,7 +12,16 @@ public class ControladorDeAlimentos {
 		
 	}
 	
-	
+	// ISugestao
+	// public boolean verificaExistenciaDeAlimento(Alimento alimento, RepositorioAlimento repositorio)
+	//	{
+	//		boolean resultado = false;
+	//		if (repositorio.procurar(alimento.getNome()) != null)
+	//			resultado = true;
+	//		
+	//		return resultado;
+	//	}
+	// FSugestao
 	public boolean verificaExistenciaDeAlimento(String nome, RepositorioAlimento repositorio)
 	{
 		boolean resultado = false;

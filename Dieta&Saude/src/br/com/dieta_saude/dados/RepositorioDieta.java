@@ -2,7 +2,7 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Dieta;
 
-public class RepositorioDieta {
+public class RepositorioDieta implements InterfaceRepositorio {
 	private Dieta[] dieta;
 	private int proxima;
 	
@@ -11,7 +11,8 @@ public class RepositorioDieta {
 		this.proxima = 0;
 	}
 	
-	public void cadastrar(Dieta dieta) {
+	public void cadastrar(Object objeto) {
+		Dieta dieta = (Dieta) objeto;
 		this.dieta[this.proxima] = dieta;
 		this.proxima = this.proxima + 1;
 	}
@@ -29,8 +30,11 @@ public class RepositorioDieta {
 		return i;
 	}
 	
-	public Dieta procurar(int id) {
-		int i = this.procurarIndice(id);
+	
+	// ccl
+	public Object procurar(Object objeto) {
+		Dieta procurado = (Dieta) objeto;
+		int i = this.procurarIndice(procurado.getId());
 		Dieta resultado = null;
 		if (i != this.proxima) {
 			resultado = this.dieta[i];
@@ -38,10 +42,13 @@ public class RepositorioDieta {
 		return resultado;
 	}
 	
-	public boolean atualizar(int periodo, int id){
-		int i = this.procurarIndice(id);
+	
+	// ccl
+	public boolean atualizar(Object objeto){
+		Dieta atualizador = (Dieta) objeto;
+		int i = this.procurarIndice(atualizador.getId());
 		if(i!= this.proxima){
-			this.dieta[i].setPeriodo(periodo);
+			this.dieta[i].setPeriodo(atualizador.getPeriodo());
 			return true;
 		}else{
 			return false;
