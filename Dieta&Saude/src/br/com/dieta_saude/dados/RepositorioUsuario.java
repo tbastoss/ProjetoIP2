@@ -2,7 +2,7 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Usuario;
 
-public class RepositorioUsuario extends Repositorio {
+public class RepositorioUsuario implements Repositorio {
 	private Usuario[] usuarios;
 	private int proximo;
 	
@@ -12,11 +12,12 @@ public class RepositorioUsuario extends Repositorio {
 		
 	}
 
+	/*
 	public void cadastrar (Usuario usuario){
 		this.usuarios[this.proximo] = usuario;
 		this.proximo++;
 	}
-	
+	*/
 	private int procurarIndice(String nome, String senha){
 		int i = 0;
 		boolean achou = false;
@@ -69,9 +70,11 @@ public class RepositorioUsuario extends Repositorio {
 		
 	}
 
-	@Override
-	public void cadastrar() {
-		// TODO Auto-generated method stub
+	
+	public void cadastrar(Object objeto) {
+		Usuario usuario = (Usuario) objeto;
+		this.usuarios[this.proximo] = usuario;
+		this.proximo++;
 		
 	}
 

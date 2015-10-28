@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import br.com.dieta_saude.java_beans.Alimento;
 
-public class RepositorioAlimento {
+public class RepositorioAlimento implements Repositorio {
 	private Alimento[] alimentos;
 	private int proxima;
 	
@@ -13,7 +13,9 @@ public class RepositorioAlimento {
 		this.proxima = 0;
 	}
 	
-	public void cadastrar(Alimento alimento) {
+	@Override
+	public void cadastrar(Object objeto) {
+		Alimento alimento = (Alimento) objeto;
 		this.alimentos[this.proxima] = alimento;
 		this.proxima = this.proxima + 1;
 	}

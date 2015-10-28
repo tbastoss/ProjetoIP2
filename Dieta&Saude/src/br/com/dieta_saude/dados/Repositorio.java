@@ -2,15 +2,15 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Usuario;
 
-abstract class Repositorio {
+public interface Repositorio {
 	
-	abstract public void cadastrar ();
+	void cadastrar ( Object objeto );
 	
-	abstract int procurarIndice();
+	// int procurarIndice();
 	
-	abstract boolean atualizar();
+	boolean atualizar();
 	
-	abstract Object procurar();
+	Object procurar();
 	
-	abstract boolean remover();
+	boolean remover();
 }
