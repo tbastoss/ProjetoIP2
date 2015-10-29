@@ -2,11 +2,11 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Usuario;
 
-<<<<<<< HEAD
+
 // public class RepositorioUsuario implements InterfaceRepositorio {
-=======
+
 public class RepositorioUsuario implements Repositorio {
->>>>>>> branch 'master' of https://github.com/wallsmanBR/ProjetoIP2.git
+
 	private Usuario[] usuarios;
 	private int proximo;
 	
@@ -15,7 +15,7 @@ public class RepositorioUsuario implements Repositorio {
 		this.proximo = 0;
 		
 	}
-<<<<<<< HEAD
+
 
 	/*
 =======
@@ -27,9 +27,9 @@ public class RepositorioUsuario implements Repositorio {
 	}
 <<<<<<< HEAD
 	*/
-=======
+
 	@Override
->>>>>>> branch 'master' of https://github.com/wallsmanBR/ProjetoIP2.git
+
 	private int procurarIndice(String nome, String senha){
 		int i = 0;
 		boolean achou = false;
@@ -83,7 +83,7 @@ public class RepositorioUsuario implements Repositorio {
 		
 	}
 
-<<<<<<< HEAD
+
 	
 	public void cadastrar(Object objeto) {
 		Usuario usuario = (Usuario) objeto;
