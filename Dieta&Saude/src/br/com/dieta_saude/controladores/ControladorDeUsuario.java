@@ -1,4 +1,4 @@
-package controladorDeUsuario;
+package br.com.dieta_saude.controladores;
 
 import br.com.dieta_saude.dados.RepositorioUsuario;
 import br.com.dieta_saude.java_beans.Usuario;

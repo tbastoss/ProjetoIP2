@@ -1,4 +1,4 @@
-package controladorDeUsuario;
+package br.com.dieta_saude.controladores;
 
 import br.com.dieta_saude.dados.RepositorioAlimento;
 import br.com.dieta_saude.dados.RepositorioUsuario;
