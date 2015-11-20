@@ -1,11 +1,13 @@
 package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Usuario;
+import br.com.dieta_saude.java_beans.UsuarioAdm;
+import br.com.dieta_saude.java_beans.UsuarioComum;
 
 
 // public class RepositorioUsuario implements InterfaceRepositorio {
 
-public class RepositorioUsuario implements Repositorio {
+public class RepositorioUsuario implements InterfaceUsuario {
 
 	private Usuario[] usuarios;
 	private int proximo;
@@ -30,7 +32,7 @@ public class RepositorioUsuario implements Repositorio {
 
 	@Override
 
-	private int procurarIndice(String nome, String senha){
+	public int procurarIndice(String nome, String senha){
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proximo)){
@@ -51,10 +53,10 @@ public class RepositorioUsuario implements Repositorio {
 		boolean retorno = false;
 		int i = this.procurarIndice(nome, senha);
 		if (i != this.proximo){
-			this.usuarios[i].setAltura(altura);
-			this.usuarios[i].setPeso(peso);
-			this.usuarios[i].setIdade(idade);
-			this.usuarios[i].setNivelDeSedentarismo(nivelDeSedentarismo);
+			((UsuarioComum) this.usuarios[i]).setAltura(altura);
+			((UsuarioComum) this.usuarios[i]).setPeso(peso);
+			((UsuarioComum) this.usuarios[i]).setIdade(idade);
+			((UsuarioComum) this.usuarios[i]).setNivelDeSedentarismo(nivelDeSedentarismo);
 			retorno = true;
 		}
 		return retorno;
@@ -85,9 +87,14 @@ public class RepositorioUsuario implements Repositorio {
 
 
 	
-	public void cadastrar(Object objeto) {
-		Usuario usuario = (Usuario) objeto;
-		this.usuarios[this.proximo] = usuario;
+	public void cadastrar(Usuario usuario) {
+		if(usuario instanceof UsuarioAdm){
+			UsuarioAdm usuarioAdm = (UsuarioAdm) usuario;
+			this.usuarios[this.proximo] = usuarioAdm;
+		}else if(usuario instanceof UsuarioComum){
+			UsuarioComum usuarioComum = (UsuarioComum) usuario;
+			this.usuarios[this.proximo] = usuarioComum;
+		}
 		this.proximo++;
 		
 	}

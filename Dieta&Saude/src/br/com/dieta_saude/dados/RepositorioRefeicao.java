@@ -2,7 +2,7 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Refeicao;
 
-public class RepositorioRefeicao implements InterfaceRepositorio {
+public class RepositorioRefeicao implements InterfaceRepositorioRefeicao {
 	private Refeicao[] refeicoes;
 	private int proxima;
 	
@@ -10,14 +10,14 @@ public class RepositorioRefeicao implements InterfaceRepositorio {
 		this.refeicoes = new Refeicao[tamanho];
 		this.proxima = 0;
 	}
-	
+	@Override
 	public void cadastrar(Object objeto) {
 		Refeicao refeicoes = (Refeicao) objeto;
 		this.refeicoes[this.proxima] = refeicoes;
 		this.proxima = this.proxima + 1;
 	}
 	
-	private int procurarIndice(int id) {
+	public int procurarIndice(int id) {
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proxima)) {

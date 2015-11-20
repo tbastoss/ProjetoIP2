@@ -2,7 +2,7 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Dieta;
 
-public class RepositorioDieta implements InterfaceRepositorio {
+public class RepositorioDieta implements InterfaceRepositorioDieta {
 	private Dieta[] dieta;
 	private int proxima;
 	
@@ -17,7 +17,7 @@ public class RepositorioDieta implements InterfaceRepositorio {
 		this.proxima = this.proxima + 1;
 	}
 	
-	private int procurarIndice(int id) {
+	public int procurarIndice(int id) {
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proxima)) {

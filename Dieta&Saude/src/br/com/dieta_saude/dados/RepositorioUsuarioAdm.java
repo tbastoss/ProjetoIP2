@@ -3,7 +3,7 @@ package br.com.dieta_saude.dados;
 import br.com.dieta_saude.java_beans.Usuario;
 import br.com.dieta_saude.java_beans.UsuarioAdm;
 
-public class RepositorioUsuarioAdm implements Repositorio {
+public class RepositorioUsuarioAdm implements InterfaceUsuarioAdm {
 	private UsuarioAdm[] usuarios;
 	private int proximo;
 	
@@ -18,7 +18,7 @@ public class RepositorioUsuarioAdm implements Repositorio {
 		this.proximo++;
 	}
 	
-	private int procurarIndice(String nome, String senha){
+	public int procurarIndice(String nome, String senha){
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proximo)){
@@ -32,7 +32,7 @@ public class RepositorioUsuarioAdm implements Repositorio {
 	
 	public UsuarioAdm procurar(String nome, String senha){
 		int i = this.procurarIndice(nome, senha);
-		Usuario resultado = null;
+		UsuarioAdm resultado = null;
 		if (i != this.proximo){
 			resultado = this.usuarios[i];			
 		}
@@ -53,53 +53,5 @@ public class RepositorioUsuarioAdm implements Repositorio {
 		
 	}
 
-	@Override
-	public void cadastrar() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	int procurarIndice() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	Object procurar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	boolean remover() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public int procurarIndice(String nome, String senha) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void cadastrar(Usuario usuario) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Usuario procurar(String nome, String senha) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean atualizar(String nome, String senha, double altura,
-			double peso, int idade, int nivelDeSedentarismo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 }

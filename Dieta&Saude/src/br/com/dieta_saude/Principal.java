@@ -8,8 +8,8 @@ import br.com.dieta_saude.java_beans.Alimento;
 import br.com.dieta_saude.java_beans.Usuario;
 import br.com.dieta_saude.java_beans.UsuarioAdm;
 import br.com.dieta_saude.java_beans.UsuarioComum;
-import controladorDeUsuario.ControladorDeAlimentos;
-import controladorDeUsuario.ControladorDeUsuario;
+import br.com.dieta_saude.controladores.ControladorDeAlimentos;
+import br.com.dieta_saude.controladores.ControladorDeUsuario;
 
 public class Principal {
 	public static void main(String []args){
@@ -26,7 +26,7 @@ public class Principal {
 		RepositorioAlimento repositorioAlimento = new RepositorioAlimento(50);
 		ControladorDeUsuario controlador = new ControladorDeUsuario();
 		ControladorDeAlimentos controladorAlimento = new ControladorDeAlimentos();
-		try{
+		//try{
 		while(!quest){
 			System.out.println("Você deseja cadastrar, logar ou sair?");
 			String opcao = scr.nextLine();
@@ -65,9 +65,9 @@ public class Principal {
 						repositorio.cadastrar(admin);
 						opcao = null;
 						quest2 = true;
-					}else{
+					}/*else{
 						System.out.println("Comando invalido!");
-					}
+					}*/
 				}
 				quest2 = false;
 			}else if(opcao.equals("logar")){
@@ -138,9 +138,9 @@ public class Principal {
 				quest = true;
 			}
 		}
-		}catch(Exception e){ 
+		/*}catch(Exception e){ 
 	    	System.out.println("Comando inválido! Tente novamente!");
-	    }
+	    }*/
 	}
 	 
 }

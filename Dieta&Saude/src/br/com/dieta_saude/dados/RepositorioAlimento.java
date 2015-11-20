@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import br.com.dieta_saude.java_beans.Alimento;
 
-public class RepositorioAlimento implements InterfaceRepositorio {
+public class RepositorioAlimento implements InterfaceRepositorioAlimentos {
 	private Alimento[] alimentos;
 	private int proxima;
 	

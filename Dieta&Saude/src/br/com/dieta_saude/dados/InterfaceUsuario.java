@@ -2,7 +2,7 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Usuario;
 
-public interface Repositorio {
+public interface InterfaceUsuario {
 	
 	int procurarIndice(String nome, String senha);
 	void cadastrar(Usuario usuario);
