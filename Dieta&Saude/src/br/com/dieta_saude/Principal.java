@@ -26,6 +26,12 @@ public class Principal {
 		RepositorioAlimento repositorioAlimento = new RepositorioAlimento(50);
 		ControladorDeUsuario controlador = new ControladorDeUsuario();
 		ControladorDeAlimentos controladorAlimento = new ControladorDeAlimentos();
+		
+		/*
+		 * Colocar os dados relacionados a arquivos aqui.
+		 * @Cristovao
+		 */
+		
 		//try{
 		while(!quest){
 			System.out.println("Você deseja cadastrar, logar ou sair?");
