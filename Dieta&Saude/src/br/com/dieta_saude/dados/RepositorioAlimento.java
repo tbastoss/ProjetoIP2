@@ -1,23 +1,24 @@
 package br.com.dieta_saude.dados;
 
-import java.util.Arrays;
-
 import br.com.dieta_saude.java_beans.Alimento;
 
-public class RepositorioAlimento implements InterfaceRepositorioAlimentos {
-	private Alimento[] alimentos;
-	private int proxima;
+public class RepositorioAlimento extends RepositorioAbstrato 
+	implements InterfaceRepositorioAlimentos {
+	
+//	private Alimento[] alimentos;
+//	private int proxima;
 	
 	public RepositorioAlimento(int tamanho) {
-		this.alimentos = new Alimento[tamanho];
-		this.proxima = 0;
+		super(tamanho);
+		this.arrayDeDados = new Alimento[tamanho];
+		
 	}
 	
-	@Override
-	// ccl
-	public void cadastrar(Object objeto) {
-		Alimento alimento = (Alimento) objeto;
-		this.alimentos[this.proxima] = alimento;
+	
+	
+	public void cadastrar(Alimento alimento) {
+		
+		this.arrayDeDados[this.proxima] = alimento;
 		this.proxima = this.proxima + 1;
 	}
 	
@@ -26,7 +27,7 @@ public class RepositorioAlimento implements InterfaceRepositorioAlimentos {
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proxima)) {
-			if (nome.equals(this.alimentos[i].getNome())) {
+			if (nome.equals( ( (Alimento) this.arrayDeDados[i]).getNome() ) ) {
 				achou = true;
 			} else {
 				i = i + 1;
@@ -41,8 +42,8 @@ public class RepositorioAlimento implements InterfaceRepositorioAlimentos {
 		Alimento atualizador = (Alimento) objeto;
 		int i = this.procurarIndice(atualizador.getNome());
 		if(i!= this.proxima){
-			this.alimentos[i].setNome(atualizador.getNome());
-			this.alimentos[i].setPontos(atualizador.getPontos());
+			( (Alimento) this.arrayDeDados[i]).setNome(atualizador.getNome() );
+			( (Alimento) this.arrayDeDados[i]).setPontos(atualizador.getPontos());
 			return true;
 		}else{
 			return false;
@@ -57,17 +58,18 @@ public class RepositorioAlimento implements InterfaceRepositorioAlimentos {
 		int i = this.procurarIndice(nome);
 		Alimento resultado = null;
 		if (i != this.proxima) {
-			resultado = this.alimentos[i];
+			resultado = (Alimento) this.arrayDeDados[i];
 		}
 		return resultado;
 	}
 	
-	public boolean remover(Object objeto) {
-		String nome = (String) objeto;
+	
+	public boolean remover(Alimento alimentoARemover) {
+		String nome = alimentoARemover.getNome();
 		int i = this.procurarIndice(nome);
 		if (i != this.proxima) {
-			this.alimentos[i] = this.alimentos[this.proxima - 1];
-			this.alimentos[this.proxima - 1] = null;
+			this.arrayDeDados[i] = (Alimento) this.arrayDeDados[this.proxima - 1];
+			this.arrayDeDados[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
 			return true;
 			//System.out.println(nome + " removido.");
@@ -79,7 +81,8 @@ public class RepositorioAlimento implements InterfaceRepositorioAlimentos {
 
 	public void mostrarAlimentos(){
 		for(int i=0; i<this.proxima ;i++){
-			System.out.println("Nome: "+alimentos[i].getNome()+". Pontos: "+ alimentos[i].getPontos()+ ".");
+			System.out.println("Nome: "+( (Alimento) arrayDeDados[i]).getNome()+
+					". Pontos: "+ ( (Alimento) arrayDeDados[i]).getPontos()+ ".");
 		}
 	}
 	
@@ -99,6 +102,20 @@ public class RepositorioAlimento implements InterfaceRepositorioAlimentos {
 		a = new Alimento("Ervilha", 3);
 		
 		repositorioDeTeste.cadastrar(a);
+		
+		repositorioDeTeste.mostrarAlimentos();
+		
+		System.out.println("Testando remover:");
+		
+		repositorioDeTeste.remover(a);
+		
+		repositorioDeTeste.mostrarAlimentos();
+		
+		System.out.println("Testanto atualizar:");
+		
+		a = new Alimento("Maçã", 15);
+		
+		repositorioDeTeste.atualizar(a);
 		
 		repositorioDeTeste.mostrarAlimentos();
 		

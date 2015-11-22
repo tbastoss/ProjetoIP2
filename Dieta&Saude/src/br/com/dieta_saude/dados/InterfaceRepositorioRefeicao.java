@@ -1,15 +1,11 @@
 package br.com.dieta_saude.dados;
 
-public interface InterfaceRepositorioRefeicao {
+import br.com.dieta_saude.java_beans.Refeicao;
 
-	void cadastrar(Object objeto);
+public interface InterfaceRepositorioRefeicao extends InterfaceAbstrata {
+
+	void cadastrar(Refeicao refeicao);
 	
-	boolean atualizar( Object objeto);
-	
-	int procurarIndice(int id);
-	
-	boolean remover(Object objeto);
-	
-	Object procurar(Object objeto);
+	boolean remover(Refeicao refeicaoARemover);
 
 }

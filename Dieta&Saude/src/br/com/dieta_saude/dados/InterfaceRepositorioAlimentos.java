@@ -1,15 +1,12 @@
 package br.com.dieta_saude.dados;
 
-import br.com.dieta_saude.java_beans.Usuario;
+import br.com.dieta_saude.java_beans.Alimento;
 
-public interface InterfaceRepositorioAlimentos {
+public interface InterfaceRepositorioAlimentos extends InterfaceAbstrata {
+
+	void cadastrar(Alimento alimento);
 	
-	void cadastrar ( Object objeto );
-	
-	boolean atualizar( Object objeto);
+	boolean remover(Alimento alimentoARemover);
 	
 	
-	boolean remover(Object objeto);
-	
-	Object procurar(Object objeto);
 }

@@ -1,15 +1,11 @@
 package br.com.dieta_saude.dados;
 
-public interface InterfaceRepositorioDieta {
+import br.com.dieta_saude.java_beans.Dieta;
 
-	void cadastrar ( Object objeto );
+public interface InterfaceRepositorioDieta extends InterfaceAbstrata{
+
+	void cadastrar(Dieta dieta);
 	
-	boolean atualizar( Object objeto);
-	
-	int procurarIndice(int id);
-	
-	boolean remover(Object objeto);
-	
-	Object procurar(Object objeto);
+	boolean remover(Dieta dietaARemover);
 
 }

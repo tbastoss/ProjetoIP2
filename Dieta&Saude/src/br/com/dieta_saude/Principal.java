@@ -120,7 +120,7 @@ public class Principal {
 								String nomeAlimento = scr.nextLine();
 								Alimento aRemover = new Alimento(nomeAlimento, 0);
 								if(controladorAlimento.verificaExistenciaDeAlimento(aRemover, repositorioAlimento)){
-									repositorioAlimento.remover(nomeAlimento);
+									repositorioAlimento.remover(aRemover);
 								}else{
 									System.out.println("Alimento não existe!");
 								}

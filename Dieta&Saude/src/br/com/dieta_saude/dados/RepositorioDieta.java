@@ -2,18 +2,21 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Dieta;
 
-public class RepositorioDieta implements InterfaceRepositorioDieta {
-	private Dieta[] dieta;
-	private int proxima;
+public class RepositorioDieta extends 
+	RepositorioAbstrato implements InterfaceRepositorioDieta {
+
+	//	private Dieta[] dieta;
+    //	private int proxima;
 	
 	public RepositorioDieta(int tamanho) {
-		this.dieta = new Dieta[tamanho];
-		this.proxima = 0;
+		super(tamanho);
+//		this.dieta = new Dieta[tamanho];
+//		this.proxima = 0;
+		this.arrayDeDados = new Dieta[tamanho];
 	}
 	
-	public void cadastrar(Object objeto) {
-		Dieta dieta = (Dieta) objeto;
-		this.dieta[this.proxima] = dieta;
+	public void cadastrar(Dieta dieta) {
+		this.arrayDeDados[this.proxima] = dieta;
 		this.proxima = this.proxima + 1;
 	}
 	
@@ -21,7 +24,7 @@ public class RepositorioDieta implements InterfaceRepositorioDieta {
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proxima)) {
-			if (id == this.dieta[i].getId()) {
+			if (id == ( (Dieta) this.arrayDeDados[i] ).getId() ) {
 				achou = true;
 			} else {
 				i = i + 1;
@@ -37,7 +40,7 @@ public class RepositorioDieta implements InterfaceRepositorioDieta {
 		int i = this.procurarIndice(procurado.getId());
 		Dieta resultado = null;
 		if (i != this.proxima) {
-			resultado = this.dieta[i];
+			resultado = (Dieta) this.arrayDeDados[i];
 		}
 		return resultado;
 	}
@@ -48,7 +51,7 @@ public class RepositorioDieta implements InterfaceRepositorioDieta {
 		Dieta atualizador = (Dieta) objeto;
 		int i = this.procurarIndice(atualizador.getId());
 		if(i!= this.proxima){
-			this.dieta[i].setPeriodo(atualizador.getPeriodo());
+			( (Dieta) this.arrayDeDados[i] ).setPeriodo(atualizador.getPeriodo());
 			return true;
 		}else{
 			return false;
@@ -56,12 +59,12 @@ public class RepositorioDieta implements InterfaceRepositorioDieta {
 		}
 	}
 	
-	public boolean remover(Object objeto) {
-		int id = (int) objeto;
+	public boolean remover(Dieta aRemover) {
+		int id = aRemover.getId();
 		int i = this.procurarIndice(id);
 		if (i != this.proxima) {
-			this.dieta[i] = this.dieta[this.proxima - 1];
-			this.dieta[this.proxima - 1] = null;
+			this.arrayDeDados[i] = this.arrayDeDados[this.proxima - 1];
+			this.arrayDeDados[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
 			return true;
 			//System.out.println("Dieta com id: "+ this.dieta[i].getId() + " removida.");
