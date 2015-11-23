@@ -1,35 +1,43 @@
 package br.com.dieta_saude.java_beans;
 
+import java.time.*;
+
 public class Dieta {
-	private int periodo;
+	//USAR JAVA TIME
+	private int periodoEmDiasDaDieta;
 	private Refeicao[][] refeicao;
 	private int qtdRefeicao;
-	private int proxima;
+	private int proximoDia;
 	private int id = 0;
-	public Dieta(int periodo, int qtdRefeicao, int id) {
-		this.periodo = periodo;
-		this.refeicao = new Refeicao[qtdRefeicao][periodo];
-		this.proxima = 0;
+	
+	public Dieta(int qtdRefeicao, int periodo) {
+		this.periodoEmDiasDaDieta = periodo;
+		this.refeicao = new Refeicao [periodo][qtdRefeicao];
+		this.proximoDia = 0;
 		this.id++;
 	}
-	public void inserirRefeicao(Refeicao refeicoes){
-		for(int i=0; i<6 ;i++){
-			this.refeicao[this.proxima][i] = refeicoes;
+	
+	public void inserirRefeicao(Refeicao refeicao){
+		for(int i=0; i<this.qtdRefeicao ;i++){
+			this.refeicao[this.proximoDia][i] = refeicao;
 		}
-		this.proxima = this.proxima + 1;
+		this.proximoDia = this.proximoDia + 1;
+		
+		//TRATAMENTO COM JAVA.TIME 		
+		/*
 		if(this.proxima == periodo){
 			System.out.println("Você deseja mudar sua dieta?");
-		}
+		}*/
 	}
 	public int getId(){
 		return id;
 	}
 	public void setPeriodo(int periodo){
-		this.periodo = periodo;
+		this.periodoEmDiasDaDieta = periodo;
 	}
 	
 	public int getPeriodo()
 	{
-		return this.periodo;
+		return this.periodoEmDiasDaDieta;
 	}
 }

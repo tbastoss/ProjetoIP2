@@ -1,7 +1,7 @@
 package br.com.dieta_saude.java_beans;
 
 public class Usuario {
-	//TEESTEEEE
+
 	protected String nome;
 	protected String senha;
 	protected int nivelUser;
