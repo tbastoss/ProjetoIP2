@@ -20,24 +20,48 @@ public class Refeicao {
 		return id;
 	}
 	
-	public void setPontos(int pontos) {
-		this.pontos = pontos;
+	public int getQtdDeAlimentos(){
+		return this.qtdDeAlimentos;
 	}
 	
 	public int getPontos(){
 		return this.pontos;
 	}
 	
+	public void setPontos(int pontos) {
+		this.pontos = pontos;
+	}
+
 	private int calculoDePontosDeUmaRefeicao(Alimento a){
 		int retorno = -1;
 		this.pontos += a.getPontos();
+		retorno = this.pontos;
 		return retorno;
 	}
 
 	public void adicionarAlimentosNaRefeicao (Alimento a){
+		this.alimentos.add(a);
 		calculoDePontosDeUmaRefeicao(a);
-		
 	}
+	
+	private int atualizacaoDosPontosDeUmaRefeicao (Alimento a){
+		int retorno = -1;
+		this.pontos -= a.getPontos();
+		retorno = this.pontos;
+		return retorno;
+	}
+	
+	public void removerAlimentoNaRefeicao (Alimento a){
+		alimentos.remove(alimentos.indexOf(a));
+		atualizacaoDosPontosDeUmaRefeicao(a);
+	}
+
+	@Override
+	public String toString() {
+		return "Refeicao [id=" + id + ", qtdDeAlimentos=" + qtdDeAlimentos
+				+ ", alimentos=" + alimentos + ", pontos=" + pontos + "]";
+	}
+	
 	
 	
 }
