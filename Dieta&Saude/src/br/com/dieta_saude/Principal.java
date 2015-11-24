@@ -1,5 +1,8 @@
 package br.com.dieta_saude;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import br.com.dieta_saude.dados.RepositorioAlimento;
@@ -11,6 +14,13 @@ import br.com.dieta_saude.java_beans.UsuarioComum;
 import br.com.dieta_saude.controladores.ControladorDeAlimentos;
 import br.com.dieta_saude.controladores.ControladorDeUsuario;
 
+/*
+ * O calculo do periodoEmDiasDaDieta deve ser feito direto na main para quando for criar o objeto do
+ * tipo dieta, já passar o periodo, no mais so precisa passar as datas para o objeto, através dos 
+ * metodos setInicioDieta e setFimDieta, para caso o usuário queira saber quando começou ou 
+ * termina a sua dieta.
+ */
+
 public class Principal {
 	public static void main(String []args){
 		boolean quest= false;
@@ -20,6 +30,10 @@ public class Principal {
 		boolean quest5= false;
 		boolean quest6= false;
 		boolean quest7= false;
+		LocalDate dataInicio;
+		LocalDate dataFim;
+		String dataFinalString;
+		int periodoEmDiasDaDieta;
 		Scanner scr = new Scanner(System.in);
 		System.out.println("Bem-vindo ao Dieta&Vida!");
 		RepositorioUsuario repositorio = new RepositorioUsuario(20);
@@ -132,7 +146,16 @@ public class Principal {
 						}
 						quest3 = false;
 					}else{
-						System.out.println("Cadastre sua dieta! Você tem "+usuario.getPontos()+"pontos disponíveis!");
+						System.out.println("Infome a data final, para o calculo do periodo da sua dieta");
+						System.out.println("OBS: A data deve ser no formato dd/MM/aaaa");
+						dataFinalString = scr.nextLine();
+						DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						dataFim = LocalDate.parse(dataFinalString, fmt);
+						dataInicio = LocalDate.now();
+						Period periodoDaDieta = Period.between(dataInicio, dataFim);
+						
+						
+						System.out.println("Cadastre sua dieta! Você tem " + usuario.getPontos() + " pontos disponíveis e o periodo da sua dieta é " + periodoDaDieta.getDays() + " dias!");
 						repositorioAlimento.mostrarAlimentos();
 					}
 				}else{
