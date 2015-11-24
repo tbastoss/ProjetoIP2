@@ -10,11 +10,16 @@ public class Dieta {
 	private int proximoDia;
 	private int pontos;
 	private int id = 0;
+	private LocalDate dataInicio;
+	private LocalDate dataFim;
 	
-	public Dieta(int qtdRefeicao, int periodoEmDias) {
-		this.periodoEmDiasDaDieta = periodoEmDias;
-		this.refeicao = new Refeicao [periodoEmDias][qtdRefeicao];
-		for (int i = 0; i< periodoEmDias; i++){
+	public Dieta(int qtdRefeicao, LocalDate dataFim) {
+		
+		this.dataInicio = LocalDate.now();
+		Period periodoDaDieta = Period.between(this.dataInicio, this.dataFim);
+		this.periodoEmDiasDaDieta = periodoDaDieta.getDays();
+		this.refeicao = new Refeicao [this.periodoEmDiasDaDieta][qtdRefeicao];
+		for (int i = 0; i < this.periodoEmDiasDaDieta; i++){
 			for (int j = 0; j < qtdRefeicao; j++){
 				this.refeicao[i][j] = null;
 			}
@@ -95,7 +100,5 @@ public class Dieta {
 		return retorno;
 	}
 	
-	public void calculoDoPeriodoEmDias(/*Recebe uma a data do final da dieta*/){
-		
-	}
+	
 }
