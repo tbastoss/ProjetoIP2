@@ -51,7 +51,7 @@ public class RepositorioDieta extends
 		Dieta atualizador = (Dieta) objeto;
 		int i = this.procurarIndice(atualizador.getId());
 		if(i!= this.proxima){
-			( (Dieta) this.arrayDeDados[i] ).setPeriodo(atualizador.getPeriodo());
+			( (Dieta) this.arrayDeDados[i] ).setPeriodoEmDiasDaDieta(atualizador.getPeriodoEmDiasDaDieta());
 			return true;
 		}else{
 			return false;
