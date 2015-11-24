@@ -3,7 +3,6 @@ package br.com.dieta_saude.java_beans;
 import java.time.*;
 
 public class Dieta {
-	//USAR JAVA TIME
 	private int periodoEmDiasDaDieta;
 	private Refeicao[][] refeicao;
 	private int qtdRefeicao;
