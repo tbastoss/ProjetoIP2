@@ -1,8 +1,10 @@
 package br.com.dieta_saude;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 import br.com.dieta_saude.dados.RepositorioAlimento;
@@ -152,10 +154,10 @@ public class Principal {
 						DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 						dataFim = LocalDate.parse(dataFinalString, fmt);
 						dataInicio = LocalDate.now();
-						Period periodoDaDieta = Period.between(dataInicio, dataFim);
+						int duracaoEmDias = (int) dataInicio.until(dataFim, ChronoUnit.DAYS);
 						
 						
-						System.out.println("Cadastre sua dieta! Você tem " + usuario.getPontos() + " pontos disponíveis e o periodo da sua dieta é " + periodoDaDieta.getDays() + " dias!");
+						System.out.println("Cadastre sua dieta! Você tem " + usuario.getPontos() + " pontos disponíveis e o periodo da sua dieta é " + duracaoEmDias + " dias!");
 						repositorioAlimento.mostrarAlimentos();
 					}
 				}else{
