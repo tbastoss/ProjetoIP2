@@ -2,7 +2,7 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Alimento;
 
-public interface InterfaceRepositorioAlimentos extends InterfaceAbstrata {
+public interface InterfaceRepositorioAlimentos extends InterfaceGenerica {
 
 	void cadastrar(Alimento alimento);
 	

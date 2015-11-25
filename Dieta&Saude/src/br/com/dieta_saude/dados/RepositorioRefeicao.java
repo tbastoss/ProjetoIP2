@@ -3,21 +3,23 @@ package br.com.dieta_saude.dados;
 import br.com.dieta_saude.java_beans.Refeicao;
 
 public class RepositorioRefeicao 
-	extends RepositorioAbstrato implements InterfaceRepositorioRefeicao {
+	extends RepositorioGenerico implements InterfaceRepositorioRefeicao {
 //	private Refeicao[] refeicoes;
 //	private int proxima;
 	
 	public RepositorioRefeicao(int tamanho) {
+		super((Object []) new Refeicao[tamanho]);
 		
-		super(tamanho);
-		this.arrayDeDados = new Refeicao[tamanho];
+//		super(tamanho);
+//		this.arrayDeDados = new Refeicao[tamanho];
 		
 	}
 	
-	
 	public void cadastrar(Refeicao refeicao) {
-		this.arrayDeDados[this.proxima] = refeicao;
-		this.proxima = this.proxima + 1;
+		super.cadastrar(refeicao);	
+		
+//		this.arrayDeDados[this.proxima] = refeicao;
+//		this.proxima = this.proxima + 1;
 	}
 	
 	public int procurarIndice(int id) {

@@ -3,21 +3,25 @@ package br.com.dieta_saude.dados;
 import br.com.dieta_saude.java_beans.Dieta;
 
 public class RepositorioDieta extends 
-	RepositorioAbstrato implements InterfaceRepositorioDieta {
+	RepositorioGenerico implements InterfaceRepositorioDieta {
 
 	//	private Dieta[] dieta;
     //	private int proxima;
 	
 	public RepositorioDieta(int tamanho) {
-		super(tamanho);
+		super((Object[]) new Dieta[tamanho]);
+		
+//		super(tamanho);
 //		this.dieta = new Dieta[tamanho];
 //		this.proxima = 0;
-		this.arrayDeDados = new Dieta[tamanho];
+//		this.arrayDeDados = new Dieta[tamanho];
 	}
 	
+	@Override
 	public void cadastrar(Dieta dieta) {
-		this.arrayDeDados[this.proxima] = dieta;
-		this.proxima = this.proxima + 1;
+		super.cadastrar(dieta);
+//		this.arrayDeDados[this.proxima] = dieta;
+//		this.proxima = this.proxima + 1;
 	}
 	
 	public int procurarIndice(int id) {

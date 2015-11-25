@@ -1,6 +1,6 @@
 package br.com.dieta_saude.dados;
 
-public interface InterfaceAbstrata {
+public interface InterfaceGenerica {
 	
 	boolean atualizar(Object objeto);
 	

@@ -2,25 +2,16 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Alimento;
 
-public class RepositorioAlimento extends RepositorioAbstrato 
+public class RepositorioAlimento extends RepositorioGenerico 
 	implements InterfaceRepositorioAlimentos {
 	
 //	private Alimento[] alimentos;
 //	private int proxima;
 	
 	public RepositorioAlimento(int tamanho) {
-		super(tamanho);
-		this.arrayDeDados = new Alimento[tamanho];
-		
+		super((Object[]) new Alimento[tamanho]);
 	}
 	
-	
-	
-	public void cadastrar(Alimento alimento) {
-		
-		this.arrayDeDados[this.proxima] = alimento;
-		this.proxima = this.proxima + 1;
-	}
 	
 	
 	private int procurarIndice(String nome) {
@@ -87,6 +78,12 @@ public class RepositorioAlimento extends RepositorioAbstrato
 	}
 	
 	
+	// ccl: codigo implementado pelo professor
+	@Override
+	public void cadastrar(Alimento alimento) {
+		super.cadastrar(alimento);
+	}
+	
 	// => Main de teste
 	public static void main(String[] args) {
 		
@@ -124,4 +121,6 @@ public class RepositorioAlimento extends RepositorioAbstrato
 		// código de teste vai aqui
 		
 	}
+
+	
 }
