@@ -51,9 +51,11 @@ public class Refeicao {
 		return retorno;
 	}
 	
-	public void removerAlimentoNaRefeicao (Alimento a){
-		alimentos.remove(alimentos.indexOf(a));
-		atualizacaoDosPontosDeUmaRefeicao(a);
+	public void removerAlimentoDaRefeicao (Alimento a){
+		if (alimentos.contains(a)){
+			alimentos.remove(a);
+			atualizacaoDosPontosDeUmaRefeicao(a);
+		}
 	}
 
 	@Override
