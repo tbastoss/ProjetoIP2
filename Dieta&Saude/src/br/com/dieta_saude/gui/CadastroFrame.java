@@ -1,4 +1,4 @@
-package br.com.dieta_saudeGUI;
+package br.com.dieta_saude.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -45,35 +45,35 @@ public class CadastroFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblCadastro = new JLabel("Cadastro");
 		lblCadastro.setBounds(5, 5, 424, 14);
 		contentPane.add(lblCadastro);
-		
+
 		textField = new JTextField();
 		textField.setBounds(5, 42, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		JLabel lblTipoDeUsurio = new JLabel("Tipo de Usu\u00E1rio:");
 		lblTipoDeUsurio.setBounds(5, 24, 86, 14);
 		contentPane.add(lblTipoDeUsurio);
-		
-		
+
 		btnOk.setBounds(100, 41, 89, 23);
 		contentPane.add(btnOk);
 		ButtonHandler handler = new ButtonHandler();
 		btnOk.addActionListener(handler);
 	}
+
 	private class ButtonHandler implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(e.getSource() == btnOk){
-				if(textField.getText().equals("comum")){
+			if (e.getSource() == btnOk) {
+				if (textField.getText().equals("comum")) {
 					ComumFrame cf = new ComumFrame();
 					cf.setVisible(true);
 				}
-				if(textField.getText().equals("dieta123")){
+				if (textField.getText().equals("dieta123")) {
 					AdmFrame ct = new AdmFrame();
 					ct.setVisible(true);
 				}

@@ -1,4 +1,4 @@
-package br.com.dieta_saudeGUI;
+package br.com.dieta_saude.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -42,29 +42,28 @@ public class LoginFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		textField = new JTextField();
 		textField.setBounds(10, 44, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setBounds(10, 75, 86, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setBounds(10, 118, 89, 23);
 		contentPane.add(btnOk);
-		
+
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setBounds(105, 47, 46, 14);
 		contentPane.add(lblNome);
-		
+
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setBounds(106, 78, 46, 14);
 		contentPane.add(lblSenha);
 	}
 
 }
-

@@ -1,4 +1,4 @@
-package br.com.dieta_saudeGUI;
+package br.com.dieta_saude.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -50,34 +50,33 @@ public class Principal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblDietasade = new JLabel("Dieta&Sa\u00FAde");
 		lblDietasade.setBounds(200, 11, 175, 30);
 		lblDietasade.setForeground(Color.BLACK);
 		lblDietasade.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDietasade.setFont(new Font("Verdana", Font.BOLD, 24));
 		contentPane.add(lblDietasade);
-		
-		
+
 		btnCadastrar.setBounds(93, 108, 136, 82);
 		contentPane.add(btnCadastrar);
-		
-		
+
 		btnLogin.setBounds(359, 108, 136, 82);
 		contentPane.add(btnLogin);
-		
+
 		ButtonHandler handler = new ButtonHandler();
 		btnCadastrar.addActionListener(handler);
 		btnLogin.addActionListener(handler);
 	}
+
 	private class ButtonHandler implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(e.getSource() == btnCadastrar){
+			if (e.getSource() == btnCadastrar) {
 				CadastroFrame cad = new CadastroFrame();
 				cad.setVisible(true);
 			}
-			if(e.getSource() == btnLogin){
+			if (e.getSource() == btnLogin) {
 				LoginFrame log = new LoginFrame();
 				log.setVisible(true);
 			}

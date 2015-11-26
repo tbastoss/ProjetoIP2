@@ -1,4 +1,4 @@
-package br.com.dieta_saudeGUI;
+package br.com.dieta_saude.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,11 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
-import javax.swing.JEditorPane;
-import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 
-public class DietaFrame extends JFrame {
+public class CriarRefeicaoFrame extends JFrame {
 
 	private JPanel contentPane;
 
@@ -22,7 +21,7 @@ public class DietaFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					DietaFrame frame = new DietaFrame();
+					CriarRefeicaoFrame frame = new CriarRefeicaoFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,32 +33,33 @@ public class DietaFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DietaFrame() {
+	public CriarRefeicaoFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(30, 63, 107, 20);
+		comboBox.setBounds(10, 39, 108, 20);
 		contentPane.add(comboBox);
-		
+
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(299, 63, 98, 20);
+		comboBox_1.setBounds(258, 39, 108, 20);
 		contentPane.add(comboBox_1);
-		
-		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(176, 155, 89, 23);
-		contentPane.add(btnOk);
-		
+
+		JLabel lblAlimento = new JLabel("Alimento");
+		lblAlimento.setBounds(10, 14, 46, 14);
+		contentPane.add(lblAlimento);
+
 		JLabel lblRefeio = new JLabel("Refei\u00E7\u00E3o");
-		lblRefeio.setBounds(30, 41, 46, 14);
+		lblRefeio.setBounds(258, 14, 46, 14);
 		contentPane.add(lblRefeio);
-		
-		JLabel lblDia = new JLabel("Dia");
-		lblDia.setBounds(301, 41, 46, 14);
-		contentPane.add(lblDia);
+
+		JButton btnOk = new JButton("OK");
+		btnOk.setBounds(151, 142, 89, 23);
+		contentPane.add(btnOk);
 	}
+
 }

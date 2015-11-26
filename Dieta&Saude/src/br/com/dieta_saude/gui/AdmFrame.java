@@ -1,4 +1,4 @@
-package br.com.dieta_saudeGUI;
+package br.com.dieta_saude.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -43,25 +43,25 @@ public class AdmFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		textField = new JTextField();
 		textField.setBounds(10, 36, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setBounds(106, 39, 46, 14);
 		contentPane.add(lblNome);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setBounds(10, 67, 86, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
-		
+
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setBounds(106, 73, 46, 14);
 		contentPane.add(lblSenha);
-		
+
 		JButton btnOk = new JButton("OK");
 		btnOk.setBounds(10, 106, 89, 23);
 		contentPane.add(btnOk);

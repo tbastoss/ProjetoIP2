@@ -1,4 +1,4 @@
-package br.com.dieta_saudeGUI;
+package br.com.dieta_saude.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -38,11 +38,11 @@ public class RefeicaoFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnNewButton = new JButton("Criar refei\u00E7\u00E3o");
 		btnNewButton.setBounds(32, 66, 114, 48);
 		contentPane.add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton("Montar dieta");
 		btnNewButton_1.setBounds(233, 66, 114, 48);
 		contentPane.add(btnNewButton_1);
