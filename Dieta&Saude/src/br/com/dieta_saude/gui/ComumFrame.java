@@ -21,14 +21,14 @@ public class ComumFrame extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-	private JTextField textField_6;
-	private JComboBox comboBox;
 	private JLabel lblSexo;
 	private JLabel lblAltura;
 	private JLabel lblPeso;
 	private JLabel lblIdade;
 	private JLabel lblNvelDeSedentarismo;
 	private JTextField textField_2;
+	private JComboBox comboBox_1;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -83,12 +83,11 @@ public class ComumFrame extends JFrame {
 		contentPane.add(textField_5);
 		textField_5.setColumns(10);
 
-		textField_6 = new JTextField();
-		textField_6.setBounds(295, 78, 86, 20);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
-
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnOk.setBounds(292, 174, 89, 23);
 		contentPane.add(btnOk);
 
@@ -101,12 +100,10 @@ public class ComumFrame extends JFrame {
 		contentPane.add(lblSenha);
 
 		String[] sexo = { "M", "F" };
-		comboBox = new JComboBox(sexo);
-		comboBox.setBounds(10, 109, 86, 24);
-		contentPane.add(comboBox);
+		double[] m = { 1.2, 1.3, 1.4, 1.5, 1.6, 1.8 };
 
 		lblSexo = new JLabel("Sexo");
-		lblSexo.setBounds(106, 116, 46, 14);
+		lblSexo.setBounds(106, 112, 46, 14);
 		contentPane.add(lblSexo);
 
 		lblAltura = new JLabel("Altura");
@@ -133,5 +130,36 @@ public class ComumFrame extends JFrame {
 		JLabel lblPeriodo = new JLabel("Periodo (dd/mm/aaaa)");
 		lblPeriodo.setBounds(179, 114, 117, 14);
 		contentPane.add(lblPeriodo);
+		String[] d = { "1.2", "1.3", "1.35", "1.45", "1.5", "1.7" };
+		JComboBox comboBox_1 = new JComboBox(d);
+		comboBox_1.setBounds(295, 78, 86, 20);
+		contentPane.add(comboBox_1);
+		
+		JButton btnTeste = new JButton("M");
+		btnTeste.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] m = { "1.2", "1.3", "1.4", "1.5", "1.6", "1.8" };
+				comboBox_1.removeAllItems();
+                for(int i=0;i<m.length;i++){
+                    comboBox_1.addItem(m[i]);
+                }
+			}
+		});
+		btnTeste.setBounds(10, 108, 46, 23);
+		contentPane.add(btnTeste);
+		
+		btnNewButton = new JButton("F");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] m = { "1.2", "1.3", "1.35", "1.45", "1.5", "1.7" };
+				comboBox_1.removeAllItems();
+                for(int i=0;i<m.length;i++){
+                    comboBox_1.addItem(m[i]);
+                }
+			}
+		});
+		btnNewButton.setBounds(58, 108, 42, 23);
+		contentPane.add(btnNewButton);
+		
 	}
 }
