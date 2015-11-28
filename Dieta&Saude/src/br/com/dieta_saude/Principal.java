@@ -8,8 +8,11 @@ import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 import br.com.dieta_saude.dados.RepositorioAlimento;
+import br.com.dieta_saude.dados.RepositorioDieta;
+import br.com.dieta_saude.dados.RepositorioRefeicao;
 import br.com.dieta_saude.dados.RepositorioUsuario;
 import br.com.dieta_saude.java_beans.Alimento;
+import br.com.dieta_saude.java_beans.Refeicao;
 import br.com.dieta_saude.java_beans.Usuario;
 import br.com.dieta_saude.java_beans.UsuarioAdm;
 import br.com.dieta_saude.java_beans.UsuarioComum;
@@ -35,11 +38,13 @@ public class Principal {
 		LocalDate dataInicio;
 		LocalDate dataFim;
 		String dataFinalString;
-		int periodoEmDiasDaDieta;
+		int periodoEmDiasDaDieta = 0;
 		Scanner scr = new Scanner(System.in);
 		System.out.println("Bem-vindo ao Dieta&Vida!");
-		RepositorioUsuario repositorio = new RepositorioUsuario(20);
-		RepositorioAlimento repositorioAlimento = new RepositorioAlimento(50);
+		RepositorioUsuario repositorio = new RepositorioUsuario(50);
+		RepositorioAlimento repositorioAlimento = new RepositorioAlimento(500);
+		RepositorioRefeicao repositorioRefeicao = new RepositorioRefeicao(100);
+		RepositorioDieta repositorioDieata = new RepositorioDieta(50);
 		ControladorDeUsuario controlador = new ControladorDeUsuario();
 		ControladorDeAlimentos controladorAlimento = new ControladorDeAlimentos();
 		
@@ -47,6 +52,16 @@ public class Principal {
 		 * Colocar os dados relacionados a arquivos aqui.
 		 * @Cristovao
 		 */
+		Alimento banana = new Alimento("Banana", 10);
+		Alimento pao = new Alimento("Pão", 30);
+		Alimento copoDeSuco = new Alimento("Copo de Suco (200ml)", 10);
+		Alimento porcaoDeBolacha = new Alimento("6unds de Bolacha", 20);
+		Alimento fatiaDeBoloSemRecheio = new Alimento("Fatia de Bolo (Sem recheio)", 25);
+		repositorioAlimento.cadastrar(banana);
+		repositorioAlimento.cadastrar(pao);
+		repositorioAlimento.cadastrar(copoDeSuco);
+		repositorioAlimento.cadastrar(porcaoDeBolacha);
+		repositorioAlimento.cadastrar(fatiaDeBoloSemRecheio);
 		
 		//try{
 		while(!quest){
@@ -71,6 +86,16 @@ public class Principal {
 						int idade = scr.nextInt();
 						System.out.println("Nivel de sedentarismo:");
 						int nivelDeSedentarismo = scr.nextInt();
+						
+						System.out.println("Infome a data final, para o calculo do periodo da sua dieta");
+						System.out.println("OBS: A data deve ser no formato dd/MM/aaaa");
+						scr.nextLine();
+						dataFinalString = scr.nextLine();
+						DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						dataFim = LocalDate.parse(dataFinalString, fmt);
+						dataInicio = LocalDate.now();
+						periodoEmDiasDaDieta = (int) dataInicio.until(dataFim, ChronoUnit.DAYS);
+						
 						UsuarioComum usuario = new UsuarioComum();
 						usuario.cadastroUsuario(nome, senha, sexo, altura, peso, idade, nivelDeSedentarismo, 0);
 						usuario.calcularPontos();
@@ -148,17 +173,31 @@ public class Principal {
 						}
 						quest3 = false;
 					}else{
-						System.out.println("Infome a data final, para o calculo do periodo da sua dieta");
-						System.out.println("OBS: A data deve ser no formato dd/MM/aaaa");
-						dataFinalString = scr.nextLine();
-						DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-						dataFim = LocalDate.parse(dataFinalString, fmt);
-						dataInicio = LocalDate.now();
-						int duracaoEmDias = (int) dataInicio.until(dataFim, ChronoUnit.DAYS);
+						System.out.println("Cadastre sua dieta! Você tem " + usuario.getPontos() + 
+								" pontos disponíveis e o periodo da sua dieta é " + periodoEmDiasDaDieta + " dias!");
+						/* FALTA AJEITAR E FINALIZAR, ESTÁ COM ALGUNS ERROS */
+						int qtdRefeicoes;
+						int qtdAlimetnoNaRefeicao;
+						System.out.println("Diga quantas refeições você quer por dia:");
+						qtdRefeicoes = scr.nextInt();
+						for (int i = 0; i < qtdRefeicoes; i++){
+							System.out.println("Diga quantos alimetnos vc quer nessa refeicao");
+							qtdAlimetnoNaRefeicao = scr.nextInt();
+							Refeicao ref = new Refeicao(qtdAlimetnoNaRefeicao);
+							repositorioRefeicao.cadastrar(ref);
+							System.out.println("ALIMENTOS DISPONÍVEIS");
+							repositorioAlimento.mostrarAlimentos();
+							scr.nextLine();
+							for (int j = 0; j < qtdAlimetnoNaRefeicao; j++){
+								System.out.println("Diga qual alimento deseja adicionar a refeição: ");
+								String nomeAlimento = scr.nextLine();
+								Alimento adicionar;
+								adicionar = (Alimento) repositorioAlimento.procurar(nomeAlimento);
+								ref.adicionarAlimentosNaRefeicao(adicionar);
+							}
+						}
+						System.out.println("Agora vamos montar sua dieta!");
 						
-						
-						System.out.println("Cadastre sua dieta! Você tem " + usuario.getPontos() + " pontos disponíveis e o periodo da sua dieta é " + duracaoEmDias + " dias!");
-						repositorioAlimento.mostrarAlimentos();
 					}
 				}else{
 					System.out.println("Usuario não existe!");
