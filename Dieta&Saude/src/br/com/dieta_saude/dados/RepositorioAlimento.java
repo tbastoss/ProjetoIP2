@@ -4,32 +4,35 @@ import br.com.dieta_saude.java_beans.Alimento;
 
 public class RepositorioAlimento extends RepositorioGenerico 
 	implements InterfaceRepositorioAlimentos {
-	
-//	private Alimento[] alimentos;
-//	private int proxima;
+
 	
 	public RepositorioAlimento(int tamanho) {
 		super((Object[]) new Alimento[tamanho]);
 	}
 	
+	// ccl: codigo implementado pelo professor
+	@Override
+	public void cadastrar(Alimento alimento) {
+		super.cadastrar(alimento);
+	}
 	
-	
-	private int procurarIndice(String nome) {
-		int i = 0;
-		boolean achou = false;
-		while ((!achou) && (i < this.proxima)) {
-			if (nome.equals( ( (Alimento) this.arrayDeDados[i]).getNome() ) ) {
-				achou = true;
-			} else {
-				i = i + 1;
-			}
+	public boolean remover(Alimento alimentoARemover) {
+		String nome = alimentoARemover.getNome();
+		int i = this.procurarIndice(nome);
+		if (i != this.proxima) {
+			this.arrayDeDados[i] = (Alimento) this.arrayDeDados[this.proxima - 1];
+			this.arrayDeDados[this.proxima - 1] = null;
+			this.proxima = this.proxima - 1;
+			return true;
+			//System.out.println(nome + " removido.");
+		} else {
+			return false;
+			//System.out.println("Alimento não existe.");
 		}
-		return i;
 	}
 	
 	// ccl
 	public boolean atualizar( Object objeto){
-		// String nome, int pontos
 		Alimento atualizador = (Alimento) objeto;
 		int i = this.procurarIndice(atualizador.getNome());
 		if(i!= this.proxima){
@@ -54,35 +57,28 @@ public class RepositorioAlimento extends RepositorioGenerico
 		return resultado;
 	}
 	
-	
-	public boolean remover(Alimento alimentoARemover) {
-		String nome = alimentoARemover.getNome();
-		int i = this.procurarIndice(nome);
-		if (i != this.proxima) {
-			this.arrayDeDados[i] = (Alimento) this.arrayDeDados[this.proxima - 1];
-			this.arrayDeDados[this.proxima - 1] = null;
-			this.proxima = this.proxima - 1;
-			return true;
-			//System.out.println(nome + " removido.");
-		} else {
-			return false;
-			//System.out.println("Alimento não existe.");
-		}
-	}
-
+		
 	public void mostrarAlimentos(){
 		for(int i=0; i<this.proxima ;i++){
 			System.out.println("Nome: "+( (Alimento) arrayDeDados[i]).getNome()+
 					". Pontos: "+ ( (Alimento) arrayDeDados[i]).getPontos()+ ".");
 		}
 	}
-	
-	
-	// ccl: codigo implementado pelo professor
-	@Override
-	public void cadastrar(Alimento alimento) {
-		super.cadastrar(alimento);
+		
+		
+	private int procurarIndice(String nome) {
+		int i = 0;
+		boolean achou = false;
+		while ((!achou) && (i < this.proxima)) {
+			if (nome.equals( ( (Alimento) this.arrayDeDados[i]).getNome() ) ) {
+				achou = true;
+			} else {
+				i = i + 1;
+			}
+		}
+		return i;
 	}
+	
 	
 	// => Main de teste
 	public static void main(String[] args) {

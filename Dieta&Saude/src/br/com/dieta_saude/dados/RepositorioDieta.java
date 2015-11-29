@@ -4,63 +4,17 @@ import br.com.dieta_saude.java_beans.Dieta;
 
 public class RepositorioDieta extends 
 	RepositorioGenerico implements InterfaceRepositorioDieta {
-
-	//	private Dieta[] dieta;
-    //	private int proxima;
+	
 	
 	public RepositorioDieta(int tamanho) {
 		super((Object[]) new Dieta[tamanho]);
-		
-//		super(tamanho);
-//		this.dieta = new Dieta[tamanho];
-//		this.proxima = 0;
-//		this.arrayDeDados = new Dieta[tamanho];
+
 	}
 	
 	@Override
 	public void cadastrar(Dieta dieta) {
 		super.cadastrar(dieta);
-//		this.arrayDeDados[this.proxima] = dieta;
-//		this.proxima = this.proxima + 1;
-	}
-	
-	public int procurarIndice(int id) {
-		int i = 0;
-		boolean achou = false;
-		while ((!achou) && (i < this.proxima)) {
-			if (id == ( (Dieta) this.arrayDeDados[i] ).getId() ) {
-				achou = true;
-			} else {
-				i = i + 1;
-			}
-		}
-		return i;
-	}
-	
-	
-	// ccl
-	public Object procurar(Object objeto) {
-		Dieta procurado = (Dieta) objeto;
-		int i = this.procurarIndice(procurado.getId());
-		Dieta resultado = null;
-		if (i != this.proxima) {
-			resultado = (Dieta) this.arrayDeDados[i];
-		}
-		return resultado;
-	}
-	
-	
-	// ccl
-	public boolean atualizar(Object objeto){
-		Dieta atualizador = (Dieta) objeto;
-		int i = this.procurarIndice(atualizador.getId());
-		if(i!= this.proxima){
-			( (Dieta) this.arrayDeDados[i] ).setPeriodoEmDiasDaDieta(atualizador.getPeriodoEmDiasDaDieta());
-			return true;
-		}else{
-			return false;
-			//System.out.println("Dieta não existe.");
-		}
+
 	}
 	
 	public boolean remover(Dieta aRemover) {
@@ -77,4 +31,43 @@ public class RepositorioDieta extends
 			//System.out.println("Dieta não existe.");
 		}
 	}
+	
+	// ccl
+	public boolean atualizar(Object objeto) {
+		Dieta atualizador = (Dieta) objeto;
+		int i = this.procurarIndice(atualizador.getId());
+		if (i != this.proxima) {
+			((Dieta) this.arrayDeDados[i]).setPeriodoEmDiasDaDieta(atualizador.getPeriodoEmDiasDaDieta());
+			return true;
+		} else {
+			return false;
+			// System.out.println("Dieta não existe.");
+		}
+	}
+
+	// ccl
+	public Object procurar(Object objeto) {
+		Dieta procurado = (Dieta) objeto;
+		int i = this.procurarIndice(procurado.getId());
+		Dieta resultado = null;
+		if (i != this.proxima) {
+			resultado = (Dieta) this.arrayDeDados[i];
+		}
+		return resultado;
+	}
+
+	public int procurarIndice(int id) {
+		int i = 0;
+		boolean achou = false;
+		while ((!achou) && (i < this.proxima)) {
+			if (id == ((Dieta) this.arrayDeDados[i]).getId()) {
+				achou = true;
+			} else {
+				i = i + 1;
+			}
+		}
+		return i;
+	}
+		
+	
 }
