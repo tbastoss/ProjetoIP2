@@ -22,13 +22,12 @@ public class ControladorDeUsuario {
 		
 	}
 	
-	public boolean verificaExistenciaDeUsuario(String nome,String senha, RepositorioUsuario repositorio)
+	public boolean verificaExistenciaDeUsuario(String nome,String senha)
 	{
-		boolean resultado = false;
-		if (repositorio.procurar(nome, senha) != null)
-			resultado = true;
+		if (RepositorioUsuario.getInstance().procurar(nome, senha) != null)
+			return true;
 		
-		return resultado;
+		return false;
 	}
 	
 		

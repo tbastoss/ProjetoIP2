@@ -6,15 +6,24 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.dieta_saude.controladores.ControladorDeUsuario;
+import br.com.dieta_saude.dados.RepositorioUsuario;
+import br.com.dieta_saude.java_beans.Usuario;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LoginFrame extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField nome;
+	private JTextField senha;
 
 	/**
 	 * Launch the application.
@@ -43,17 +52,33 @@ public class LoginFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		textField = new JTextField();
-		textField.setBounds(10, 44, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		nome = new JTextField();
+		nome.setBounds(10, 44, 86, 20);
+		contentPane.add(nome);
+		nome.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(10, 75, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		senha = new JTextField();
+		senha.setBounds(10, 75, 86, 20);
+		contentPane.add(senha);
+		senha.setColumns(10);
 
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControladorDeUsuario controlador = new ControladorDeUsuario();
+				if(controlador.verificaExistenciaDeUsuario(nome.getText(), senha.getText())){
+					Usuario usuario = RepositorioUsuario.getInstance().procurar(nome.getText(), senha.getText());
+					if(controlador.verificaTipoDeUsuario(usuario)){
+						//é adm
+						JOptionPane.showMessageDialog(null, "é adm");
+					}
+					else{
+						//é comum
+						JOptionPane.showMessageDialog(null, "é comum");
+					}
+				}//*/
+			}
+		});
 		btnOk.setBounds(10, 118, 89, 23);
 		contentPane.add(btnOk);
 

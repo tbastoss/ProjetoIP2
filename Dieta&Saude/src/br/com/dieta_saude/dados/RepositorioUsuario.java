@@ -11,6 +11,7 @@ public class RepositorioUsuario implements InterfaceUsuario {
 
 	private Usuario[] usuarios;
 	private int proximo;
+	private static RepositorioUsuario instance;
 	
 	public  RepositorioUsuario (int tamanho){
 		this.usuarios = new Usuario[tamanho];
@@ -18,7 +19,11 @@ public class RepositorioUsuario implements InterfaceUsuario {
 		
 	}
 
-
+	public static RepositorioUsuario getInstance(){
+	      if (instance == null)
+	         instance = new RepositorioUsuario(50);
+	      return instance;
+	}
 	/*
 =======
 	@Override
