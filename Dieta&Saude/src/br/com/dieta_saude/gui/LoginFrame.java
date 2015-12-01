@@ -9,7 +9,9 @@ import javax.swing.border.EmptyBorder;
 
 import br.com.dieta_saude.controladores.ControladorDeUsuario;
 import br.com.dieta_saude.dados.RepositorioUsuario;
+import br.com.dieta_saude.dados.RepositorioUsuarioAdm;
 import br.com.dieta_saude.java_beans.Usuario;
+import br.com.dieta_saude.java_beans.UsuarioAdm;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -66,18 +68,21 @@ public class LoginFrame extends JFrame {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControladorDeUsuario controlador = new ControladorDeUsuario();
-				if(controlador.verificaExistenciaDeUsuario(nome.getText(), senha.getText())){
-					Usuario usuario = RepositorioUsuario.getInstance().procurar(nome.getText(), senha.getText());
-					if(controlador.verificaTipoDeUsuario(usuario)){
-						//é adm
-						JOptionPane.showMessageDialog(null, "é adm");
+					Usuario usuarioComum = RepositorioUsuario.getInstance().procurar(nome.getText(), senha.getText());
+					Usuario usuarioAdm = RepositorioUsuarioAdm.getInstance().procurar(nome.getText(), senha.getText());
+					if(usuarioComum != null){
+						if(controlador.verificaExistenciaDeUsuario(nome.getText(), senha.getText())){
+							JOptionPane.showMessageDialog(null, "é comum");
+						}
+					}else if(usuarioAdm != null){
+						if(controlador.verificaExistenciaDeUsuarioAdm(nome.getText(), senha.getText())){
+							JOptionPane.showMessageDialog(null, "é adm");
+						}
 					}
 					else{
-						//é comum
-						JOptionPane.showMessageDialog(null, "é comum");
+						JOptionPane.showMessageDialog(null, "erro");
 					}
 				}//*/
-			}
 		});
 		btnOk.setBounds(10, 118, 89, 23);
 		contentPane.add(btnOk);

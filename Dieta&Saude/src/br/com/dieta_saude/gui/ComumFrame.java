@@ -35,7 +35,6 @@ public class ComumFrame extends JFrame {
 	private JButton btnNewButton;
 	private JButton btnOk;
 	private char sexo2;
-	RepositorioUsuario repositorio = new RepositorioUsuario(50);
 
 	/**
 	 * Launch the application.
@@ -168,7 +167,7 @@ public class ComumFrame extends JFrame {
 				String nivel = nivelSedentarismo.getSelectedItem().toString();
 				comumUser.cadastroUsuario(nome.getText(), senha.getText(), sexo2, Double.parseDouble(altura.getText()), Double.parseDouble(peso.getText()), Integer.parseInt(idade.getText()), Integer.parseInt(nivel), 0);
 				comumUser.calcularPontos();
-				repositorio.cadastrar(comumUser);
+				RepositorioUsuario.getInstance().cadastrar(comumUser);
 			}
 		});
 		btnOk.setBounds(292, 174, 89, 23);

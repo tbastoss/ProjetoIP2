@@ -6,6 +6,7 @@ import br.com.dieta_saude.java_beans.UsuarioAdm;
 public class RepositorioUsuarioAdm implements InterfaceUsuarioAdm {
 	private UsuarioAdm[] usuarios;
 	private int proximo;
+	private static RepositorioUsuarioAdm instance;
 	
 	public  RepositorioUsuarioAdm (int tamanho){
 		this.usuarios = new UsuarioAdm[tamanho];
@@ -16,6 +17,12 @@ public class RepositorioUsuarioAdm implements InterfaceUsuarioAdm {
 	public void cadastrar (UsuarioAdm usuario){
 		this.usuarios[this.proximo] = usuario;
 		this.proximo++;
+	}
+	
+	public static RepositorioUsuarioAdm getInstance(){
+	      if (instance == null)
+	         instance = new RepositorioUsuarioAdm(50);
+	      return instance;
 	}
 	
 	public int procurarIndice(String nome, String senha){

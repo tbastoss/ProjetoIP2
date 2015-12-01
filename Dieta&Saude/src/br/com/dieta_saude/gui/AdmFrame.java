@@ -22,7 +22,6 @@ public class AdmFrame extends JFrame {
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField senha;
-	RepositorioUsuarioAdm repositorio = new RepositorioUsuarioAdm(5);
 	
 	/**
 	 * Launch the application.
@@ -75,7 +74,7 @@ public class AdmFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				UsuarioAdm admUser = new UsuarioAdm();
 				admUser.cadastrarAdm(nome.getText(), senha.getText(), 1);
-				repositorio.cadastrar(admUser);
+				RepositorioUsuarioAdm.getInstance().cadastrar(admUser);
 			}
 		});
 		btnOk.setBounds(10, 106, 89, 23);

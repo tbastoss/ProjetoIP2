@@ -1,6 +1,7 @@
 package br.com.dieta_saude.controladores;
 
 import br.com.dieta_saude.dados.RepositorioUsuario;
+import br.com.dieta_saude.dados.RepositorioUsuarioAdm;
 import br.com.dieta_saude.java_beans.Usuario;
 
 public class ControladorDeUsuario {
@@ -29,7 +30,13 @@ public class ControladorDeUsuario {
 		
 		return false;
 	}
-	
+	public boolean verificaExistenciaDeUsuarioAdm(String nome,String senha)
+	{
+		if (RepositorioUsuarioAdm.getInstance().procurar(nome, senha) != null)
+			return true;
+		
+		return false;
+	}
 		
 	
 }
