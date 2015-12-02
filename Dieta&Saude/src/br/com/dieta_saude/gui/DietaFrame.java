@@ -107,7 +107,7 @@ public class DietaFrame extends JFrame {
 					dieta.setInicioDieta(Sessao.getInstance().getUsuario().getInicio());
 					dieta.setFimDieta(Sessao.getInstance().getUsuario().getFim());
 					JOptionPane.showMessageDialog(null, String.valueOf(dieta.toString()));
-					AcompanhamentoFrame af = new AcompanhamentoFrame();
+					AcompanhamentoFrame af = new AcompanhamentoFrame(dieta);
 					af.setVisible(true);
 				}else{
 					String divComando[] = new String[2];
@@ -129,12 +129,12 @@ public class DietaFrame extends JFrame {
 		btnAdicionar.setBounds(291, 62, 89, 23);
 		contentPane.add(btnAdicionar);
 		
-		JLabel lblSeusPontos = new JLabel("Seus pontos:");
-		lblSeusPontos.setBounds(46, 135, 102, 20);
+		JLabel lblSeusPontos = new JLabel("Seus pontos di\u00E1rios:");
+		lblSeusPontos.setBounds(30, 135, 102, 20);
 		contentPane.add(lblSeusPontos);
 		
-		JLabel lblPontosDaDieta = new JLabel("Pontos da dieta:");
-		lblPontosDaDieta.setBounds(46, 166, 119, 14);
+		JLabel lblPontosDaDieta = new JLabel("Pontos totais da dieta:");
+		lblPontosDaDieta.setBounds(30, 166, 119, 14);
 		contentPane.add(lblPontosDaDieta);
 		
 		pontosUsuario = new JLabel(String.valueOf(Sessao.getInstance().getUsuario().getPontos()));

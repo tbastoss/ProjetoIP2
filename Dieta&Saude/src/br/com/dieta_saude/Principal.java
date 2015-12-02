@@ -26,8 +26,8 @@ import br.com.dieta_saude.controladores.ControladorDeUsuario;
  * termina a sua dieta.
  */
 
-public class Principal {
-	public static void main(String []args){
+//public class Principal {
+	/*public static void main(String []args){
 		boolean quest= false;
 		boolean quest2 = false;
 		boolean quest3= false;
@@ -52,7 +52,7 @@ public class Principal {
 		 * Colocar os dados relacionados a arquivos aqui.
 		 * @Cristovao
 		 */
-		Alimento banana = new Alimento("Banana", 10);
+		/*Alimento banana = new Alimento("Banana", 10);
 		Alimento pao = new Alimento("Pão", 30);
 		Alimento copoDeSuco = new Alimento("Copo de Suco (200ml)", 10);
 		Alimento porcaoDeBolacha = new Alimento("6unds de Bolacha", 20);
@@ -115,7 +115,7 @@ public class Principal {
 					}/*else{
 						System.out.println("Comando invalido!");
 					}*/
-				}
+			/*	}
 				quest2 = false;
 			}else if(opcao.equals("logar")){
 				System.out.println("Insira seu nome:");
@@ -171,12 +171,12 @@ public class Principal {
 							}
 							
 						}
-						quest3 = false;
+				/*		quest3 = false;
 					}else{
 						System.out.println("Cadastre sua dieta! Você tem " + usuario.getPontos() + 
 								" pontos disponíveis e o periodo da sua dieta é " + periodoEmDiasDaDieta + " dias!");
 						/* FALTA AJEITAR E FINALIZAR, ESTÁ COM ALGUNS ERROS */
-						int qtdRefeicoes;
+					/*	int qtdRefeicoes;
 						int qtdAlimetnoNaRefeicao;
 						System.out.println("Diga quantas refeições você quer por dia:");
 						qtdRefeicoes = scr.nextInt();
@@ -211,6 +211,6 @@ public class Principal {
 		/*}catch(Exception e){ 
 	    	System.out.println("Comando inválido! Tente novamente!");
 	    }*/
-	}
+/*	}
 	 
-}
+}*/

@@ -4,12 +4,18 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import br.com.dieta_saude.java_beans.Dieta;
 import br.com.dieta_saude.java_beans.Sessao;
 
 import javax.swing.JLabel;
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AcompanhamentoFrame extends JFrame {
 
@@ -22,8 +28,8 @@ public class AcompanhamentoFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AcompanhamentoFrame frame = new AcompanhamentoFrame();
-					frame.setVisible(true);
+					//AcompanhamentoFrame frame = new AcompanhamentoFrame();
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -34,8 +40,8 @@ public class AcompanhamentoFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AcompanhamentoFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public AcompanhamentoFrame(Dieta dieta) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -90,9 +96,13 @@ public class AcompanhamentoFrame extends JFrame {
 		fim.setBounds(305, 72, 125, 14);
 		contentPane.add(fim);
 		
-		JLabel lblRefeicoes = new JLabel("Refei\u00E7\u00F5es:");
-		lblRefeicoes.setBounds(239, 97, 73, 14);
-		contentPane.add(lblRefeicoes);
+		JButton btnRefeies = new JButton("Refei\u00E7\u00F5es");
+		btnRefeies.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, String.valueOf(dieta.toString()));
+			}
+		});
+		btnRefeies.setBounds(237, 93, 89, 23);
+		contentPane.add(btnRefeies);
 	}
-
 }

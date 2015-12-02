@@ -3,6 +3,8 @@ package br.com.dieta_saude.java_beans;
 import java.time.*;
 import java.util.Arrays;
 
+import br.com.dieta_saude.dados.RepositorioUsuario;
+
 public class Dieta {
 	private int periodoEmDiasDaDieta;
 	private Refeicao[][] refeicao;
@@ -12,7 +14,7 @@ public class Dieta {
 	private int id = 0;
 	private LocalDate InicioDieta;
 	private LocalDate FimDieta;
-	
+	private static Dieta instance;
 	public Dieta(int qtdRefeicao, int periodoEmDiasDaDieta) {
 		this.periodoEmDiasDaDieta = periodoEmDiasDaDieta;
 		this.refeicao = new Refeicao [periodoEmDiasDaDieta][qtdRefeicao];
@@ -25,6 +27,9 @@ public class Dieta {
 		this.pontos = 0;
 		this.id++;
 		this.qtdRefeicao = qtdRefeicao;
+	}
+	public static Dieta getInstance(){
+	      return instance;
 	}
 
 	public int getPeriodoEmDiasDaDieta() {
