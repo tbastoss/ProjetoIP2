@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import br.com.dieta_saude.controladores.ControladorDeUsuario;
 import br.com.dieta_saude.dados.RepositorioUsuario;
 import br.com.dieta_saude.dados.RepositorioUsuarioAdm;
+import br.com.dieta_saude.java_beans.Sessao;
 import br.com.dieta_saude.java_beans.Usuario;
 import br.com.dieta_saude.java_beans.UsuarioAdm;
 
@@ -73,10 +74,12 @@ public class LoginFrame extends JFrame {
 					if(usuarioComum != null){
 						if(controlador.verificaExistenciaDeUsuario(nome.getText(), senha.getText())){
 							JOptionPane.showMessageDialog(null, "é comum");
+							Sessao.getInstance().setUsuario(usuarioComum);
 						}
 					}else if(usuarioAdm != null){
 						if(controlador.verificaExistenciaDeUsuarioAdm(nome.getText(), senha.getText())){
 							JOptionPane.showMessageDialog(null, "é adm");
+							Sessao.getInstance().setUsuario(usuarioAdm);
 						}
 					}
 					else{

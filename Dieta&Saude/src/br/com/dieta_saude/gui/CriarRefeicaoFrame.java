@@ -45,21 +45,17 @@ public class CriarRefeicaoFrame extends JFrame {
 		comboBox.setBounds(10, 39, 108, 20);
 		contentPane.add(comboBox);
 
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(258, 39, 108, 20);
-		contentPane.add(comboBox_1);
-
 		JLabel lblAlimento = new JLabel("Alimento");
 		lblAlimento.setBounds(10, 14, 46, 14);
 		contentPane.add(lblAlimento);
 
-		JLabel lblRefeio = new JLabel("Refei\u00E7\u00E3o");
-		lblRefeio.setBounds(258, 14, 46, 14);
-		contentPane.add(lblRefeio);
-
 		JButton btnOk = new JButton("OK");
-		btnOk.setBounds(151, 142, 89, 23);
+		btnOk.setBounds(10, 70, 89, 23);
 		contentPane.add(btnOk);
+		
+		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.setBounds(128, 38, 89, 23);
+		contentPane.add(btnAdicionar);
 	}
 
 }
