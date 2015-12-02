@@ -66,9 +66,19 @@ public class AdmPainelFrame extends JFrame {
 		JButton btnAdicionarAlimento = new JButton("Adicionar Alimento");
 		btnAdicionarAlimento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				nome.getText();
+				Integer.parseInt(pontos.getText());				
 			}
 		});
 		btnAdicionarAlimento.setBounds(20, 103, 134, 23);
 		contentPane.add(btnAdicionarAlimento);
+		
+		JButton btnRemoverAlimento = new JButton("Remover Alimento");
+		btnRemoverAlimento.setBounds(20, 129, 134, 23);
+		contentPane.add(btnRemoverAlimento);
+		
+		JButton btnAtualizarAlimento = new JButton("Atualizar Alimento");
+		btnAtualizarAlimento.setBounds(21, 154, 133, 23);
+		contentPane.add(btnAtualizarAlimento);
 	}
 }
