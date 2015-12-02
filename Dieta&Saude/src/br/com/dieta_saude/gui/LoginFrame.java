@@ -73,13 +73,15 @@ public class LoginFrame extends JFrame {
 					Usuario usuarioAdm = RepositorioUsuarioAdm.getInstance().procurar(nome.getText(), senha.getText());
 					if(usuarioComum != null){
 						if(controlador.verificaExistenciaDeUsuario(nome.getText(), senha.getText())){
-							JOptionPane.showMessageDialog(null, "é comum");
 							Sessao.getInstance().setUsuario(usuarioComum);
+							RefeicaoFrame rf = new RefeicaoFrame();
+							rf.setVisible(true);
 						}
 					}else if(usuarioAdm != null){
 						if(controlador.verificaExistenciaDeUsuarioAdm(nome.getText(), senha.getText())){
-							JOptionPane.showMessageDialog(null, "é adm");
 							Sessao.getInstance().setUsuario(usuarioAdm);
+							AdmPainelFrame adf = new AdmPainelFrame();
+							adf.setVisible(true);
 						}
 					}
 					else{
