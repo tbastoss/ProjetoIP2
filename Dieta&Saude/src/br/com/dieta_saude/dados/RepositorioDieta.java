@@ -2,20 +2,18 @@ package br.com.dieta_saude.dados;
 
 import br.com.dieta_saude.java_beans.Dieta;
 
-public class RepositorioDieta extends 
-	RepositorioGenerico implements InterfaceRepositorioDieta {
-	
-	
+public class RepositorioDieta extends RepositorioGenerico implements InterfaceRepositorioDieta {
+
 	public RepositorioDieta(int tamanho) {
 		super((Object[]) new Dieta[tamanho]);
-
 	}
-	
+
 	@Override
 	public void cadastrar(Dieta dieta) {
 		super.cadastrar(dieta);
 
 	}
+
 	
 	public boolean remover(Dieta aRemover) {
 		int id = aRemover.getId();
@@ -25,14 +23,15 @@ public class RepositorioDieta extends
 			this.arrayDeDados[this.proxima - 1] = null;
 			this.proxima = this.proxima - 1;
 			return true;
-			//System.out.println("Dieta com id: "+ this.dieta[i].getId() + " removida.");
+			// System.out.println("Dieta com id: "+ this.dieta[i].getId() + "
+			// removida.");
 		} else {
 			return false;
-			//System.out.println("Dieta não existe.");
+			// System.out.println("Dieta não existe.");
 		}
 	}
 	
-	// ccl
+
 	public boolean atualizar(Object objeto) {
 		Dieta atualizador = (Dieta) objeto;
 		int i = this.procurarIndice(atualizador.getId());
@@ -45,9 +44,9 @@ public class RepositorioDieta extends
 		}
 	}
 
-	// ccl
-	public Object procurar(Object objeto) {
-		Dieta procurado = (Dieta) objeto;
+	
+	public Object procurar(Object dieta) {
+		Dieta procurado = (Dieta) dieta;
 		int i = this.procurarIndice(procurado.getId());
 		Dieta resultado = null;
 		if (i != this.proxima) {
@@ -55,7 +54,8 @@ public class RepositorioDieta extends
 		}
 		return resultado;
 	}
-
+	
+	
 	public int procurarIndice(int id) {
 		int i = 0;
 		boolean achou = false;
@@ -68,6 +68,5 @@ public class RepositorioDieta extends
 		}
 		return i;
 	}
-		
-	
+
 }

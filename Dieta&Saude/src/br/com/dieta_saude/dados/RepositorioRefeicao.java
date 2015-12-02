@@ -6,6 +6,7 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 
 	public RepositorioRefeicao(int tamanho) {
 		super((Object[]) new Refeicao[tamanho]);
+
 	}
 
 	public void cadastrar(Refeicao refeicao) {
@@ -28,7 +29,6 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 		}
 	}
 
-	// ccl
 	public boolean atualizar(Object objeto) {
 		Refeicao atualizador = (Refeicao) objeto;
 		int i = this.procurarIndice(atualizador.getId());
@@ -40,9 +40,8 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 		}
 	}
 
-	// ccl
-	public Object procurar(Object objeto) {
-		Refeicao procurado = (Refeicao) objeto;
+	public Object procurar(Object refeicao) {
+		Refeicao procurado = (Refeicao) refeicao;
 		int i = this.procurarIndice(procurado.getId());
 		Refeicao resultado = null;
 		if (i != this.proxima) {
@@ -51,7 +50,7 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 		return resultado;
 	}
 
-	public int procurarIndice(int id) {
+	private int procurarIndice(int id) {
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proxima)) {
