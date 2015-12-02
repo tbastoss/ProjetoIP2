@@ -18,8 +18,8 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 	      return instance;
 	}
 	public boolean remover(Refeicao refeicaoARemover) {
-		int id = refeicaoARemover.getId();
-		int i = this.procurarIndice(id);
+		String nome = refeicaoARemover.getNome();
+		int i = this.procurarIndice(nome);
 		if (i != this.proxima) {
 			this.arrayDeDados[i] = this.arrayDeDados[this.proxima - 1];
 			this.arrayDeDados[this.proxima - 1] = null;
@@ -43,7 +43,7 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 
 	public boolean atualizar(Object objeto) {
 		Refeicao atualizador = (Refeicao) objeto;
-		int i = this.procurarIndice(atualizador.getId());
+		int i = this.procurarIndice(atualizador.getNome());
 		if (i != this.proxima) {
 			((Refeicao) this.arrayDeDados[i]).setPontos(atualizador.getPontos());
 			return true;
@@ -52,9 +52,9 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 		}
 	}
 
-	public Object procurar(Object refeicao) {
-		Refeicao procurado = (Refeicao) refeicao;
-		int i = this.procurarIndice(procurado.getId());
+	public Refeicao procurar(String nome) {
+		//Refeicao procurado = (Refeicao) refeicao;
+		int i = this.procurarIndice(nome);
 		Refeicao resultado = null;
 		if (i != this.proxima) {
 			resultado = (Refeicao) this.arrayDeDados[i];
@@ -62,11 +62,11 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 		return resultado;
 	}
 
-	private int procurarIndice(int id) {
+	private int procurarIndice(String nome) {
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proxima)) {
-			if (id == ((Refeicao) this.arrayDeDados[i]).getId()) {
+			if (nome == ((Refeicao) this.arrayDeDados[i]).getNome()) {
 				achou = true;
 			} else {
 				i = i + 1;

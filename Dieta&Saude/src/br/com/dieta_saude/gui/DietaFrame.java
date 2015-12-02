@@ -28,6 +28,8 @@ public class DietaFrame extends JFrame {
 	private JPanel contentPane;
 	private static int qntRef;
 	private static Dieta dieta;
+	private static int periodoAction = 0;
+	private static int qtdRefeicaoAction = 0;
 	/**
 	 * Launch the application.
 	 */
@@ -54,6 +56,8 @@ public class DietaFrame extends JFrame {
 		Sessao.getInstance().getUsuario().setDieta(dieta);
 		Refeicao refeicao[][] = new Refeicao[dieta.getPeriodoEmDiasDaDieta()][dieta.getQtdRefeicao()];
 		
+		JOptionPane.showMessageDialog(null, periodo + " " + qntRef);
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -73,6 +77,7 @@ public class DietaFrame extends JFrame {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dieta.setRefeicao(refeicao);
+				JOptionPane.showMessageDialog(null, dieta.toString());
 			}
 		});
 		btnOk.setBounds(176, 155, 89, 23);
@@ -84,17 +89,14 @@ public class DietaFrame extends JFrame {
 		
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
-			int periodo = 0;//dieta.getPeriodoEmDiasDaDieta();
-			int qtdRefeicao = 0;//dieta.getQtdRefeicao()
-			
 			public void actionPerformed(ActionEvent arg0) {
 				String divComando[] = new String[2];
 				divComando = comboBox.getSelectedItem().toString().split(" ");
-				refeicao[periodo][qtdRefeicao] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
-				qtdRefeicao++;
-				if (qtdRefeicao == dieta.getQtdRefeicao()){
-					periodo++;
-					qtdRefeicao = 0;
+				refeicao[periodoAction][qtdRefeicaoAction] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
+				qtdRefeicaoAction++;
+				if (qtdRefeicaoAction == dieta.getQtdRefeicao()){
+					periodoAction++;
+					qtdRefeicaoAction = 0;
 				}
 			}
 		});

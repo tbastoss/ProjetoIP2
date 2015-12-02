@@ -1,6 +1,7 @@
 package br.com.dieta_saude.java_beans;
 
 import java.time.*;
+import java.util.Arrays;
 
 public class Dieta {
 	private int periodoEmDiasDaDieta;
@@ -110,6 +111,14 @@ public class Dieta {
 		this.pontos -= refeicao.getPontos();
 		retorno = this.pontos;
 		return retorno;
+	}
+
+	@Override
+	public String toString() {
+		return "Dieta [periodoEmDiasDaDieta=" + periodoEmDiasDaDieta
+				+ ", refeicao=" + Arrays.toString(refeicao) + ", proximoDia="
+				+ proximoDia + ", pontos=" + pontos + ", InicioDieta="
+				+ InicioDieta + ", FimDieta=" + FimDieta + "]";
 	}
 	
 	
