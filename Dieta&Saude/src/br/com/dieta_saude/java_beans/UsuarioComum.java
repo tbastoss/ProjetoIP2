@@ -26,6 +26,7 @@ public class UsuarioComum extends Usuario {
     	this.nivelUser = nivelUser;
     	this.inicio = inicio;
     	this.fim = fim;
+    	this.dieta = null;
 	}
 	
 	public Dieta getDieta() {

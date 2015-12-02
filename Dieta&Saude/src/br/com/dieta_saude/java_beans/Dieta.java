@@ -119,11 +119,24 @@ public class Dieta {
 
 	@Override
 	public String toString() {
+		String nomeRefeicoes = " ";
+		for(int i = 0; i < periodoEmDiasDaDieta; i++){
+			for (int j = 0; j < qtdRefeicao; j++){
+				nomeRefeicoes = refeicao[i][j].getNome();
+				nomeRefeicoes = nomeRefeicoes + " ";
+			}
+			nomeRefeicoes = nomeRefeicoes + "\n";
+		}
+			
+		
 		return "Dieta [periodoEmDiasDaDieta=" + periodoEmDiasDaDieta
-				+ ", refeicao=" + Arrays.toString(refeicao) + ", proximoDia="
-				+ proximoDia + ", pontos=" + pontos + ", InicioDieta="
-				+ InicioDieta + ", FimDieta=" + FimDieta + "]";
-	}
+				+ ", Quantidade de Refeições=" + this.qtdRefeicao +  
+				", pontos=" + pontos + ", InicioDieta="
+				+ InicioDieta + ", FimDieta=" + FimDieta + "\n" +
+				", refeicoes da dieta=\n";
+				
+				};
+	
 	
 	
 }
