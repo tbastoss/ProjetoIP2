@@ -6,13 +6,11 @@ import br.com.dieta_saude.dados.RepositorioAlimento;
 
 public class Refeicao {
 	private int id = 0;
-	private int qtdDeAlimentos;
 	private ArrayList <Alimento> alimentos = new ArrayList<Alimento>();
 	private int pontos;
 	private boolean isEmpty;
 	
-	public Refeicao (int qtdDeAlimentos){
-			this.qtdDeAlimentos = qtdDeAlimentos;
+	public Refeicao (){
 			this.pontos = 0;
 			this.id++;
 			this.isEmpty = true;
@@ -20,10 +18,6 @@ public class Refeicao {
 	
 	public int getId() {
 		return id;
-	}
-	
-	public int getQtdDeAlimentos(){
-		return this.qtdDeAlimentos;
 	}
 	
 	public int getPontos(){
@@ -63,8 +57,7 @@ public class Refeicao {
 
 	@Override
 	public String toString() {
-		return "Refeicao [id=" + id + ", qtdDeAlimentos=" + qtdDeAlimentos
-				+ ", alimentos=" + alimentos + ", pontos=" + pontos + "]";
+		return "Refeicao [id=" + id +", alimentos=" + alimentos + ", pontos=" + pontos + "]";
 	}
 	
 	

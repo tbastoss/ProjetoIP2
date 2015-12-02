@@ -51,15 +51,15 @@ public class RepositorioAlimento extends RepositorioGenerico implements Interfac
 	}
 
 	
-	public Object procurar(Object alimento) {
-		String nomeAlimento = ((Alimento) alimento).getNome();
-		int i = this.procurarIndiceComNome(nomeAlimento);
-		Alimento resultado = null;
-		if (i != this.proxima) {
-			resultado = (Alimento) this.arrayDeDados[i];
-		}
-		return resultado;
-	}
+	 public Alimento procurar(String nome) {
+		  //String nomeAlimento = ((Alimento) alimento).getNome();
+		  int i = this.procurarIndiceComNome(nome);
+		  Alimento resultado = null;
+		  if (i != this.proxima) {
+		   resultado = (Alimento) this.arrayDeDados[i];
+		  }
+		  return resultado;
+	 }
 
 	
 	public Alimento mostrarAlimentos(int pos) {
@@ -85,4 +85,5 @@ public class RepositorioAlimento extends RepositorioGenerico implements Interfac
 		}
 		return i;
 	}
+
 }

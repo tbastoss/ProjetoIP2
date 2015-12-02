@@ -18,6 +18,6 @@ public abstract class RepositorioGenerico {
 
 	public abstract boolean atualizar(Object objeto);
 
-	public abstract Object procurar(Object objeto);
+	//public abstract Object procurar(Object objeto);
 
 }
