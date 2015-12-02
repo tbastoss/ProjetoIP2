@@ -12,44 +12,42 @@ public class ControladorDeAlimentos {
 		
 	}
 	
-	// ISugestao
-	 public boolean verificaExistenciaDeAlimento(Alimento alimento, RepositorioAlimento repositorio)
+	 public boolean verificar(Alimento alimento)
 		{
-			boolean resultado = false;
-			if (repositorio.procurar(alimento.getNome()) != null)
-				resultado = true;
+			if (RepositorioAlimento.getInstance().procurar(alimento.getNome()) != null)
+				return true;
 			
-			return resultado;
+			return false;
 		}
-	// FSugestao
 	
-	/*
-	public boolean verificaExistenciaDeAlimento(String nome, RepositorioAlimento repositorio)
+	public boolean adicionar(Alimento alimento)
 	{
-		boolean resultado = false;
-		if (repositorio.procurar(nome) != null)
-			resultado = true;
-		
-		return resultado;
-	}
-	*/
-	
-	public boolean adicionaAlimentos(Alimento alimento, 
-			RepositorioAlimento repositorio)
-	{
-		boolean resultado = false;
-		boolean verificador = verificaExistenciaDeAlimento(alimento, repositorio);
-		
-		// Alimento teste = new Alimento(nome, pontos);
+		boolean verificador = verificar(alimento);
 	
 		if (verificador == false){
-			repositorio.cadastrar(alimento);
-			resultado = true;
+			RepositorioAlimento.getInstance().cadastrar(alimento);
+			return true;
 		}
-		
-		return resultado;
+		return false;
 	}
 	
+	public boolean remover(Alimento alimento){
+		boolean verificador = verificar(alimento);
+		if(verificador == true){
+			RepositorioAlimento.getInstance().remover(alimento);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean atualizar(Alimento alimento){
+		boolean verificador = verificar(alimento);
+		if(verificador == true){
+			RepositorioAlimento.getInstance().atualizar(alimento);
+			return true;
+		}
+		return false;
+	}
 	
 	
 	

@@ -3,11 +3,16 @@ package br.com.dieta_saude.dados;
 import br.com.dieta_saude.java_beans.Alimento;
 
 public class RepositorioAlimento extends RepositorioGenerico implements InterfaceRepositorioAlimentos {
-
+	private static RepositorioAlimento instance;
+	
 	public RepositorioAlimento(int tamanho) {
 		super((Object[]) new Alimento[tamanho]);
 	}
-
+	public static RepositorioAlimento getInstance(){
+	      if (instance == null)
+	         instance = new RepositorioAlimento(500);
+	      return instance;
+	}
 	// ccl: codigo implementado pelo professor
 	@Override
 	public void cadastrar(Alimento alimento) {

@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.dieta_saude.controladores.ControladorDeAlimentos;
+import br.com.dieta_saude.java_beans.Alimento;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -66,18 +70,33 @@ public class AdmPainelFrame extends JFrame {
 		JButton btnAdicionarAlimento = new JButton("Adicionar Alimento");
 		btnAdicionarAlimento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nome.getText();
-				Integer.parseInt(pontos.getText());				
+				Alimento aCadastrar = new Alimento(nome.getText(), Integer.parseInt(pontos.getText()));
+				ControladorDeAlimentos con = new ControladorDeAlimentos();
+				con.adicionar(aCadastrar);			
 			}
 		});
 		btnAdicionarAlimento.setBounds(20, 103, 134, 23);
 		contentPane.add(btnAdicionarAlimento);
 		
 		JButton btnRemoverAlimento = new JButton("Remover Alimento");
+		btnRemoverAlimento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Alimento aRemover = new Alimento(nome.getText(), Integer.parseInt(pontos.getText()));
+				ControladorDeAlimentos con = new ControladorDeAlimentos();
+				con.remover(aRemover);		
+			}
+		});
 		btnRemoverAlimento.setBounds(20, 129, 134, 23);
 		contentPane.add(btnRemoverAlimento);
 		
 		JButton btnAtualizarAlimento = new JButton("Atualizar Alimento");
+		btnAtualizarAlimento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Alimento aAtualizar = new Alimento(nome.getText(), Integer.parseInt(pontos.getText()));
+				ControladorDeAlimentos con = new ControladorDeAlimentos();
+				con.atualizar(aAtualizar);	
+			}
+		});
 		btnAtualizarAlimento.setBounds(21, 154, 133, 23);
 		contentPane.add(btnAtualizarAlimento);
 	}
