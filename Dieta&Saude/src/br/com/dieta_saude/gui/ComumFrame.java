@@ -15,6 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.awt.event.ActionEvent;
 
 public class ComumFrame extends JFrame {
@@ -163,9 +166,12 @@ public class ComumFrame extends JFrame {
 		btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UsuarioComum comumUser = new UsuarioComum();
 				String nivel = nivelSedentarismo.getSelectedItem().toString();
-				comumUser.cadastroUsuario(nome.getText(), senha.getText(), sexo2, Double.parseDouble(altura.getText()), Double.parseDouble(peso.getText()), Integer.parseInt(idade.getText()), Integer.parseInt(nivel), 0);
+				DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				LocalDate dataFim = LocalDate.parse(periodo.getText(), fmt);
+				LocalDate dataInicio = LocalDate.now();
+				
+				UsuarioComum comumUser = new UsuarioComum(nome.getText(), senha.getText(), sexo2, Double.parseDouble(altura.getText()), Double.parseDouble(peso.getText()), Integer.parseInt(idade.getText()), Integer.parseInt(nivel), 0, dataInicio, dataFim);
 				comumUser.calcularPontos();
 				RepositorioUsuario.getInstance().cadastrar(comumUser);
 			}
