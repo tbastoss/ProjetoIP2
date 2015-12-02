@@ -1,12 +1,21 @@
 package br.com.dieta_saude.java_beans;
 
+import java.time.LocalDate;
+
 public class UsuarioComum extends Usuario {
-	public UsuarioComum(){
-		super();
-	}
+	private char sexo;
+	private double altura;
+	private double peso;
+	private int idade;
+	private int nivelDeSedentarismo; //Vai de 1 - 6, para o calculo do FA, em calcularPontos
+	private int pontos;
+	private Dieta dieta;
+	private LocalDate inicio;
+	private LocalDate fim;
 	
-	public void cadastroUsuario(String nome, String senha, char sexo, double altura, double peso, int idade, int nivelDeSedentarismo, int nivelUser){
-    	this.nome = nome;
+	public UsuarioComum(String nome, String senha, char sexo, double altura, double peso, int idade, int nivelDeSedentarismo, int nivelUser, LocalDate inicio, LocalDate fim){
+		super();
+		this.nome = nome;
     	this.senha = senha;
     	this.sexo = sexo;
     	this.altura = altura;
@@ -15,7 +24,15 @@ public class UsuarioComum extends Usuario {
     	this.nivelDeSedentarismo = nivelDeSedentarismo;
     	this.id++;
     	this.nivelUser = nivelUser;
-    }
+	}
+	
+	public Dieta getDieta() {
+		return dieta;
+	}
+	
+	public void setDieta(Dieta dieta) {
+		this.dieta = dieta;
+	}
 	
 	public void setAltura(double altura) {
 		this.altura = altura;
