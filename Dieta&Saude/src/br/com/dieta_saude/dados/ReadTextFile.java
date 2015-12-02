@@ -25,7 +25,7 @@ public class ReadTextFile {
 	
 	
 	// Lê o registro no arquivo
-	public void readRecords(RepositorioAlimento repositorio){
+	public void readRecords(){
 		
 		// objeto a ser gravado na tela
 		
@@ -38,7 +38,7 @@ public class ReadTextFile {
 				Alimento record = new Alimento("",0);
 				record.setNome(input.next());
 				record.setPontos(input.nextInt());
-				repositorio.cadastrar(record);
+				RepositorioAlimento.getInstance().cadastrar(record);
 			}
 		}
 		catch ( NoSuchElementException elementException)
@@ -63,10 +63,9 @@ public class ReadTextFile {
 	
 	public static void main(String[] args) {
 		ReadTextFile application = new ReadTextFile();
-		RepositorioAlimento repositorio = RepositorioAlimento.getInstance();
 		
 		application.openFile();
-		application.readRecords(repositorio);
+		application.readRecords();
 		application.closeFile();
 		
 		
