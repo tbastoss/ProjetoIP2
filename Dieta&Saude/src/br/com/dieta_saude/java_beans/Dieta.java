@@ -24,6 +24,7 @@ public class Dieta {
 		this.proximoDia = 0;
 		this.pontos = 0;
 		this.id++;
+		this.qtdRefeicao = qtdRefeicao;
 	}
 
 	public int getPeriodoEmDiasDaDieta() {
@@ -62,6 +63,10 @@ public class Dieta {
 		return id;
 	}
 	
+	public int getPontos() {
+		return pontos;
+	}
+
 	public LocalDate getInicioDieta() {
 		return InicioDieta;
 	}

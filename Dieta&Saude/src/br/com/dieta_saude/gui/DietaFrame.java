@@ -94,25 +94,26 @@ public class DietaFrame extends JFrame {
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (periodoAction == (dieta.getPeriodoEmDiasDaDieta()) && qtdRefeicaoAction == (dieta.getQtdRefeicao())){
+				if (periodoAction == (dieta.getPeriodoEmDiasDaDieta())){
 					JOptionPane.showMessageDialog(null, "Você criou sua dieta!");
 					dieta.setRefeicao(refeicao);
 					dieta.setInicioDieta(Sessao.getInstance().getUsuario().getInicio());
 					dieta.setFimDieta(Sessao.getInstance().getUsuario().getFim());
-					JOptionPane.showMessageDialog(null, dieta.toString());
+					JOptionPane.showMessageDialog(null, String.valueOf(dieta.toString()));
+				}else{
+					String divComando[] = new String[2];
+					divComando = comboBox.getSelectedItem().toString().split(" ");
+					refeicao[periodoAction][qtdRefeicaoAction] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
+					//JOptionPane.showMessageDialog(null, periodoAction + " "+ refeicao[periodoAction][qtdRefeicaoAction].getPontos() + refeicao[periodoAction][qtdRefeicaoAction].getNome() + " "+qtdRefeicaoAction);
+					dieta.setPontos(refeicao[periodoAction][qtdRefeicaoAction].getPontos());
+					qtdRefeicaoAction++;		
 				}
-				
-				String divComando[] = new String[2];
-				divComando = comboBox.getSelectedItem().toString().split(" ");
-				refeicao[periodoAction][qtdRefeicaoAction] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
-				//JOptionPane.showMessageDialog(null, periodoAction + " "+ refeicao[periodoAction][qtdRefeicaoAction].getPontos() + refeicao[periodoAction][qtdRefeicaoAction].getNome() + " "+qtdRefeicaoAction);
-				dieta.setPontos(refeicao[periodoAction][qtdRefeicaoAction].getPontos());
-				qtdRefeicaoAction++;					
-				
 				if (qtdRefeicaoAction == (dieta.getQtdRefeicao())){
 					periodoAction++;
 					qtdRefeicaoAction = 0;
 				}
+				
+					
 			}
 		});
 		btnAdicionar.setBounds(291, 62, 89, 23);

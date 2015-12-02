@@ -39,6 +39,8 @@ public class ComumFrame extends JFrame {
 	private JButton btnNewButton;
 	private JButton btnOk;
 	private char sexo2;
+	private JLabel lblNewLabel;
+	private JButton btnInfos;
 
 	/**
 	 * Launch the application.
@@ -179,10 +181,23 @@ public class ComumFrame extends JFrame {
 				ComumFrame.this.dispose();
 			}
 		});
-		btnOk.setBounds(292, 174, 89, 23);
+		btnOk.setBounds(10, 222, 89, 23);
 		contentPane.add(btnOk);
 		btnNewButton.setBounds(58, 108, 42, 23);
 		contentPane.add(btnNewButton);
+		
+		btnInfos = new JButton("Infos");
+		btnInfos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "1 \u2013 Muito sedent\u00E1rio, n\u00E3o possui atividade f\u00EDsica programada;\n\r\n2 \u2013 Possui um dia-a-dia movimentado, por\u00E9m sem atividade f\u00EDsica programada. Ou possui um dia-a-dia parado, por\u00E9m com atividade f\u00EDsica programada 3 vezes por semana, com at\u00E9 30 min por dia;\n\r\n3 \u2013 Possui um dia-a-dia movimentado e com atividade f\u00EDsica programada 3 vezes por semana, com cerca de 30 min por dia;\n\r\n4 \u2013 Possui um dia-a-dia movimentado e possui atividade f\u00EDsica programada 3 vezes por semana, com mais de 1 hora. Ou com atividade f\u00EDsica programada di\u00E1ria, por mais de 30 minutos;\n\r\n5 \u2013 Possui um dia-a-dia movimentado e pratica atividade f\u00EDsica programada di\u00E1ria, por 1 hora a 2,5 horas;\n\r\n6 \u2013 Possui um dia-a-dia movimentado e pratica atividade f\u00EDsica programada di\u00E1ria, por mais de 3 horas;");
+			}
+		});
+		btnInfos.setBounds(292, 143, 89, 23);
+		contentPane.add(btnInfos);
+		
+		//lblNewLabel = new JLabel("<html>1 \u2013 Muito sedent\u00E1rio, n\u00E3o possui atividade f\u00EDsica programada;<br>\r\n2 \u2013 Possui um dia-a-dia movimentado, por\u00E9m sem atividade f\u00EDsica programada. Ou possui um dia-a-dia parado, por\u00E9m com atividade f\u00EDsica programada 3 vezes por semana, com at\u00E9 30 min por dia;<br>\r\n3 \u2013 Possui um dia-a-dia movimentado e com atividade f\u00EDsica programada 3 vezes por semana, com cerca de 30 min por dia;<br>\r\n4 \u2013 Possui um dia-a-dia movimentado e possui atividade f\u00EDsica programada 3 vezes por semana, com mais de 1 hora. Ou com atividade f\u00EDsica programada di\u00E1ria, por mais de 30 minutos;<br>\r\n5 \u2013 Possui um dia-a-dia movimentado e pratica atividade f\u00EDsica programada di\u00E1ria, por 1 hora a 2,5 horas;<br>\r\n6 \u2013 Possui um dia-a-dia movimentado e pratica atividade f\u00EDsica programada di\u00E1ria, por mais de 3 horas;</html>");
+		//lblNewLabel.setBounds(149, 144, 369, 207);
+		//contentPane.add(lblNewLabel);
 		
 	}
 }
