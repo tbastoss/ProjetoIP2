@@ -4,9 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -54,7 +56,8 @@ public class RefeicaoFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton("Montar dieta");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DietaFrame df = new DietaFrame();
+				int qntRef = Integer.parseInt(JOptionPane.showInputDialog("Quantas refeições você deseja ter por dia?"));
+				DietaFrame df = new DietaFrame(qntRef);
 				df.setVisible(true);
 			}
 		});

@@ -35,11 +35,7 @@ public class DietaFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					qntRef = Integer.parseInt(JOptionPane.showInputDialog("Quantas refeições você deseja ter por dia?"));
-					int periodo = (int) Sessao.getInstance().getUsuario().getInicio().until(Sessao.getInstance().getUsuario().getFim(), ChronoUnit.DAYS);
-					dieta = new Dieta(qntRef, periodo);
-					Sessao.getInstance().getUsuario().setDieta(dieta);
-					DietaFrame frame = new DietaFrame();
+					DietaFrame frame = new DietaFrame(0);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,8 +47,14 @@ public class DietaFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public DietaFrame() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public DietaFrame(int qtdRefeicao) {
+		qntRef = qtdRefeicao;
+		int periodo = (int) Sessao.getInstance().getUsuario().getInicio().until(Sessao.getInstance().getUsuario().getFim(), ChronoUnit.DAYS);
+		dieta = new Dieta(qntRef, periodo);
+		Sessao.getInstance().getUsuario().setDieta(dieta);
+		Refeicao refeicao[][] = new Refeicao[dieta.getPeriodoEmDiasDaDieta()][dieta.getQtdRefeicao()];
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,6 +70,11 @@ public class DietaFrame extends JFrame {
 		}
 
 		JButton btnOk = new JButton("OK");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dieta.setRefeicao(refeicao);
+			}
+		});
 		btnOk.setBounds(176, 155, 89, 23);
 		contentPane.add(btnOk);
 
@@ -76,14 +83,21 @@ public class DietaFrame extends JFrame {
 		contentPane.add(lblRefeio);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
-		/*btnAdicionar.addActionListener(new ActionListener() {
+		btnAdicionar.addActionListener(new ActionListener() {
 			int periodo = 0;//dieta.getPeriodoEmDiasDaDieta();
 			int qtdRefeicao = 0;//dieta.getQtdRefeicao()
-			Refeicao refeicao[][] = new Refeicao[dieta.getPeriodoEmDiasDaDieta()][dieta.getQtdRefeicao()];
+			
 			public void actionPerformed(ActionEvent arg0) {
-				
+				String divComando[] = new String[2];
+				divComando = comboBox.getSelectedItem().toString().split(" ");
+				refeicao[periodo][qtdRefeicao] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
+				qtdRefeicao++;
+				if (qtdRefeicao == dieta.getQtdRefeicao()){
+					periodo++;
+					qtdRefeicao = 0;
+				}
 			}
-		});*/
+		});
 		btnAdicionar.setBounds(291, 62, 89, 23);
 		contentPane.add(btnAdicionar);
 	}
