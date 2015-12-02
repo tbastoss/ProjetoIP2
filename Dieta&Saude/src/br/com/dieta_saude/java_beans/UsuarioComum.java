@@ -24,6 +24,8 @@ public class UsuarioComum extends Usuario {
     	this.nivelDeSedentarismo = nivelDeSedentarismo;
     	this.id++;
     	this.nivelUser = nivelUser;
+    	this.inicio = inicio;
+    	this.fim = fim;
 	}
 	
 	public Dieta getDieta() {
