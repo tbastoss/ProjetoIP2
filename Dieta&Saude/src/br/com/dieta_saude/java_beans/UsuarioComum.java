@@ -61,6 +61,10 @@ public class UsuarioComum extends Usuario {
 		this.nivelDeSedentarismo = nivelDeSedentarismo;
 	}
 	
+	public int getNivelDeSedentarismo() {
+		return nivelDeSedentarismo;
+	}
+
 	public int getPontos() {
 		return pontos;
 	}

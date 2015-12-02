@@ -143,7 +143,7 @@ public class Dieta {
 				+ ", Quantidade de Refeições=" + this.qtdRefeicao +  
 				", pontos=" + pontos + ", InicioDieta="
 				+ InicioDieta + ", FimDieta=" + FimDieta + "\n" +
-				", refeicoes da dieta=\n" + refeicoes().toString();
+				", refeicoes da dieta=\n" + Arrays.deepToString(refeicoes());
 	};
 	
 	

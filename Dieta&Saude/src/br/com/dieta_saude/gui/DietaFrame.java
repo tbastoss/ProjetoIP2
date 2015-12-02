@@ -30,6 +30,8 @@ public class DietaFrame extends JFrame {
 	private static Dieta dieta;
 	private static int periodoAction = 0;
 	private static int qtdRefeicaoAction = 0;
+	private JLabel pontosDieta;
+	private JLabel pontosUsuario;
 	/**
 	 * Launch the application.
 	 */
@@ -58,7 +60,7 @@ public class DietaFrame extends JFrame {
 		Sessao.getInstance().getUsuario().setDieta(dieta);
 		Refeicao refeicao[][] = new Refeicao[dieta.getPeriodoEmDiasDaDieta()][dieta.getQtdRefeicao()];
 		
-		JOptionPane.showMessageDialog(null, periodo + " " + qntRef);
+		JOptionPane.showMessageDialog(null, periodo + " dias e " + qntRef + " refeições");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 600, 400);
@@ -91,32 +93,52 @@ public class DietaFrame extends JFrame {
 		lblRefeio.setBounds(30, 41, 46, 14);
 		contentPane.add(lblRefeio);
 		
+		pontosDieta = new JLabel("0");
+		pontosDieta.setBounds(158, 166, 76, 14);
+		contentPane.add(pontosDieta);
+		
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				if (periodoAction == (dieta.getPeriodoEmDiasDaDieta())){
 					JOptionPane.showMessageDialog(null, "Você criou sua dieta!");
 					dieta.setRefeicao(refeicao);
 					dieta.setInicioDieta(Sessao.getInstance().getUsuario().getInicio());
 					dieta.setFimDieta(Sessao.getInstance().getUsuario().getFim());
 					JOptionPane.showMessageDialog(null, String.valueOf(dieta.toString()));
+					AcompanhamentoFrame af = new AcompanhamentoFrame();
+					af.setVisible(true);
 				}else{
 					String divComando[] = new String[2];
 					divComando = comboBox.getSelectedItem().toString().split(" ");
 					refeicao[periodoAction][qtdRefeicaoAction] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
 					//JOptionPane.showMessageDialog(null, periodoAction + " "+ refeicao[periodoAction][qtdRefeicaoAction].getPontos() + refeicao[periodoAction][qtdRefeicaoAction].getNome() + " "+qtdRefeicaoAction);
 					dieta.setPontos(refeicao[periodoAction][qtdRefeicaoAction].getPontos());
-					qtdRefeicaoAction++;		
+					qtdRefeicaoAction++;
+					
 				}
 				if (qtdRefeicaoAction == (dieta.getQtdRefeicao())){
 					periodoAction++;
 					qtdRefeicaoAction = 0;
 				}
-				
+				pontosDieta.setText(String.valueOf(dieta.getPontos()));
 					
 			}
 		});
 		btnAdicionar.setBounds(291, 62, 89, 23);
 		contentPane.add(btnAdicionar);
+		
+		JLabel lblSeusPontos = new JLabel("Seus pontos:");
+		lblSeusPontos.setBounds(46, 135, 102, 20);
+		contentPane.add(lblSeusPontos);
+		
+		JLabel lblPontosDaDieta = new JLabel("Pontos da dieta:");
+		lblPontosDaDieta.setBounds(46, 166, 119, 14);
+		contentPane.add(lblPontosDaDieta);
+		
+		pontosUsuario = new JLabel(String.valueOf(Sessao.getInstance().getUsuario().getPontos()));
+		pontosUsuario.setBounds(158, 138, 76, 14);
+		contentPane.add(pontosUsuario);
 	}
 }
