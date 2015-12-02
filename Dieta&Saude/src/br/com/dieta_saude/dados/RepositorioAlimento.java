@@ -62,13 +62,16 @@ public class RepositorioAlimento extends RepositorioGenerico implements Interfac
 	}
 
 	
-	public void mostrarAlimentos() {
-		for (int i = 0; i < this.proxima; i++) {
+	public Alimento mostrarAlimentos(int pos) {
+		/*for (int i = 0; i < this.proxima; i++) {
 			System.out.println("Nome: " + ((Alimento) arrayDeDados[i]).getNome() + ". Pontos: "
 					+ ((Alimento) arrayDeDados[i]).getPontos() + ".");
-		}
+		}*/
+		return (Alimento) arrayDeDados[pos];
 	}
-	
+	public int tamanhoRepositorio(){
+		return proxima;
+	}
 	
 	private int procurarIndiceComNome(String nome) {
 		int i = 0;
@@ -82,45 +85,4 @@ public class RepositorioAlimento extends RepositorioGenerico implements Interfac
 		}
 		return i;
 	}
-
-	// => Main de teste
-	public static void main(String[] args) {
-
-		RepositorioAlimento repositorioDeTeste = new RepositorioAlimento(3);
-
-		// Testando cadastro de alimentos com interface
-		System.out.println("\nTestando cadastro de alimentos com interface");
-
-		Alimento a = new Alimento("Maçã", 10);
-
-		repositorioDeTeste.cadastrar(a);
-
-		a = new Alimento("Ervilha", 3);
-
-		repositorioDeTeste.cadastrar(a);
-
-		repositorioDeTeste.mostrarAlimentos();
-
-		System.out.println("Testando remover:");
-
-		repositorioDeTeste.remover(a);
-
-		repositorioDeTeste.mostrarAlimentos();
-
-		System.out.println("Testanto atualizar:");
-
-		a = new Alimento("Maçã", 15);
-
-		repositorioDeTeste.atualizar(a);
-
-		repositorioDeTeste.mostrarAlimentos();
-
-		System.out.println(repositorioDeTeste.procurar(a));
-
-		// Testando atualizador de alimentos com interface
-
-		// código de teste vai aqui
-
-	}
-
 }
