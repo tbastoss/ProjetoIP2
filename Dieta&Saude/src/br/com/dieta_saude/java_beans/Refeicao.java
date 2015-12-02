@@ -9,11 +9,13 @@ public class Refeicao {
 	private int qtdDeAlimentos;
 	private ArrayList <Alimento> alimentos = new ArrayList<Alimento>();
 	private int pontos;
+	private boolean isEmpty;
 	
 	public Refeicao (int qtdDeAlimentos){
 			this.qtdDeAlimentos = qtdDeAlimentos;
 			this.pontos = 0;
 			this.id++;
+			this.isEmpty = true;
 	}
 	
 	public int getId() {
@@ -41,6 +43,7 @@ public class Refeicao {
 
 	public void adicionarAlimentosNaRefeicao (Alimento a){
 		this.alimentos.add(a);
+		this.isEmpty = false;
 		calculoDePontosDeUmaRefeicao(a);
 	}
 	
