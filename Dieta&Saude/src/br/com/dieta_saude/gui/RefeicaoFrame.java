@@ -52,6 +52,12 @@ public class RefeicaoFrame extends JFrame {
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Montar dieta");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DietaFrame df = new DietaFrame();
+				df.setVisible(true);
+			}
+		});
 		btnNewButton_1.setBounds(233, 66, 114, 48);
 		contentPane.add(btnNewButton_1);
 	}

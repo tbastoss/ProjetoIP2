@@ -19,10 +19,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class CriarRefeicaoFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField nomeRef;
 
 	/**
 	 * Launch the application.
@@ -55,7 +57,7 @@ public class CriarRefeicaoFrame extends JFrame {
 		RepositorioAlimento.getInstance().cadastrar(porcaoDeBolacha);
 		RepositorioAlimento.getInstance().cadastrar(fatiaDeBoloSemRecheio);*/
 
-		Refeicao ref = new Refeicao();
+		Refeicao ref = new Refeicao("");
 		ReadTextFile application = new ReadTextFile();
 		
 		application.openFile();
@@ -83,11 +85,12 @@ public class CriarRefeicaoFrame extends JFrame {
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ref.setNome(nomeRef.getText());
 				RepositorioRefeicao.getInstance().cadastrar(ref);
 				JOptionPane.showMessageDialog(null, ref.toString());
 			}
 		});
-		btnOk.setBounds(10, 70, 89, 23);
+		btnOk.setBounds(10, 144, 89, 23);
 		contentPane.add(btnOk);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
@@ -100,6 +103,14 @@ public class CriarRefeicaoFrame extends JFrame {
 		});
 		btnAdicionar.setBounds(335, 38, 89, 23);
 		contentPane.add(btnAdicionar);
+		
+		nomeRef = new JTextField();
+		nomeRef.setBounds(10, 113, 315, 20);
+		contentPane.add(nomeRef);
+		nomeRef.setColumns(10);
+		
+		JLabel lblNomeDaRefeicao = new JLabel("Nome da Refeicao");
+		lblNomeDaRefeicao.setBounds(10, 80, 89, 14);
+		contentPane.add(lblNomeDaRefeicao);
 	}
-
 }

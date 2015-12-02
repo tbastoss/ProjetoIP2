@@ -32,6 +32,14 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 			// System.out.println("Refeição não existe.");
 		}
 	}
+	
+	public int tamanhoRepositorio(){
+		return proxima;
+	}
+	
+	public Refeicao mostrarRefeicao(int pos){
+		return (Refeicao) arrayDeDados[pos];
+	}
 
 	public boolean atualizar(Object objeto) {
 		Refeicao atualizador = (Refeicao) objeto;

@@ -5,15 +5,17 @@ import java.util.ArrayList;
 import br.com.dieta_saude.dados.RepositorioAlimento;
 
 public class Refeicao {
+	private String nome;
 	private int id = 0;
 	private ArrayList <Alimento> alimentos = new ArrayList<Alimento>();
 	private int pontos;
 	private boolean isEmpty;
 	
-	public Refeicao (){
-			this.pontos = 0;
-			this.id++;
-			this.isEmpty = true;
+	public Refeicao (String nome){
+		this.nome = nome;
+		this.pontos = 0;
+		this.id++;
+		this.isEmpty = true;
 	}
 	
 	public int getId() {
@@ -26,6 +28,14 @@ public class Refeicao {
 	
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
+	}
+	
+	public void setNome(String nome){
+		this.nome = nome;
+	}
+	
+	public String getNome(){
+		return this.nome;
 	}
 
 	private int calculoDePontosDeUmaRefeicao(Alimento a){
