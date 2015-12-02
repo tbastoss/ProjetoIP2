@@ -116,26 +116,30 @@ public class Dieta {
 		retorno = this.pontos;
 		return retorno;
 	}
+	
+	private String[] refeicoes(){
+		int cont = periodoEmDiasDaDieta * qtdRefeicao;
+		String retorno[] = new String[cont];
+		int a = 0;
+		while (a < cont){
+			for (int i = 0; i < periodoEmDiasDaDieta; i++){
+				for (int j = 0; j < qtdRefeicao; j++){
+					retorno[a] = refeicao[i][j].getNome();
+					a++;
+				}
+			}
+		}
+		return retorno;
+	}
 
 	@Override
 	public String toString() {
-		String nomeRefeicoes = " ";
-		for(int i = 0; i < periodoEmDiasDaDieta; i++){
-			for (int j = 0; j < qtdRefeicao; j++){
-				nomeRefeicoes = refeicao[i][j].getNome();
-				nomeRefeicoes = nomeRefeicoes + " ";
-			}
-			nomeRefeicoes = nomeRefeicoes + "\n";
-		}
-			
-		
 		return "Dieta [periodoEmDiasDaDieta=" + periodoEmDiasDaDieta
 				+ ", Quantidade de Refeições=" + this.qtdRefeicao +  
 				", pontos=" + pontos + ", InicioDieta="
 				+ InicioDieta + ", FimDieta=" + FimDieta + "\n" +
-				", refeicoes da dieta=\n";
-				
-				};
+				", refeicoes da dieta=\n" + refeicoes().toString();
+	};
 	
 	
 	

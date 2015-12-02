@@ -29,5 +29,12 @@ public class Alimento {
 	public void setPontos(int pontos) {
 		this.pontos = pontos;
 	}
+
+	@Override
+	public String toString() {
+		return nome;
+	}
+	
+	
 	
 }

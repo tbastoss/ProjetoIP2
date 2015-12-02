@@ -94,23 +94,22 @@ public class DietaFrame extends JFrame {
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (periodoAction < dieta.getPeriodoEmDiasDaDieta() && qtdRefeicaoAction < dieta.getQtdRefeicao()){
-				String divComando[] = new String[2];
-				divComando = comboBox.getSelectedItem().toString().split(" ");
-				refeicao[periodoAction][qtdRefeicaoAction] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
-				//JOptionPane.showMessageDialog(null, periodoAction + " "+ refeicao[periodoAction][qtdRefeicaoAction].getPontos() + refeicao[periodoAction][qtdRefeicaoAction].getNome() + " "+qtdRefeicaoAction);
-				dieta.setPontos(refeicao[periodoAction][qtdRefeicaoAction].getPontos());
-				qtdRefeicaoAction++;
-				}
-				if (periodoAction == (dieta.getPeriodoEmDiasDaDieta()-1) && qtdRefeicaoAction == (dieta.getQtdRefeicao()-1)){
+				if (periodoAction == (dieta.getPeriodoEmDiasDaDieta()) && qtdRefeicaoAction == (dieta.getQtdRefeicao())){
 					JOptionPane.showMessageDialog(null, "Você criou sua dieta!");
 					dieta.setRefeicao(refeicao);
 					dieta.setInicioDieta(Sessao.getInstance().getUsuario().getInicio());
 					dieta.setFimDieta(Sessao.getInstance().getUsuario().getFim());
 					JOptionPane.showMessageDialog(null, dieta.toString());
-					
 				}
-				else if (qtdRefeicaoAction == (dieta.getQtdRefeicao()-1)){
+				
+				String divComando[] = new String[2];
+				divComando = comboBox.getSelectedItem().toString().split(" ");
+				refeicao[periodoAction][qtdRefeicaoAction] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
+				//JOptionPane.showMessageDialog(null, periodoAction + " "+ refeicao[periodoAction][qtdRefeicaoAction].getPontos() + refeicao[periodoAction][qtdRefeicaoAction].getNome() + " "+qtdRefeicaoAction);
+				dieta.setPontos(refeicao[periodoAction][qtdRefeicaoAction].getPontos());
+				qtdRefeicaoAction++;					
+				
+				if (qtdRefeicaoAction == (dieta.getQtdRefeicao())){
 					periodoAction++;
 					qtdRefeicaoAction = 0;
 				}

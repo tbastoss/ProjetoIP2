@@ -67,7 +67,7 @@ public class Refeicao {
 
 	@Override
 	public String toString() {
-		return "Refeicao [id=" + id +", alimentos=" + alimentos + ", pontos=" + pontos + "]";
+		return "Refeicao [alimentos=" + alimentos.toString() + ", pontos=" + pontos + "]";
 	}
 	
 	
