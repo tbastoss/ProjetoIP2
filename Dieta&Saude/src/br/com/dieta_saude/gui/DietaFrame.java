@@ -2,18 +2,25 @@ package br.com.dieta_saude.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.time.temporal.ChronoUnit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.dieta_saude.java_beans.Dieta;
+import br.com.dieta_saude.java_beans.Sessao;
+
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class DietaFrame extends JFrame {
 
 	private JPanel contentPane;
+	private static int qntRef;
 
 	/**
 	 * Launch the application.
@@ -22,6 +29,10 @@ public class DietaFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					qntRef = Integer.parseInt(JOptionPane.showInputDialog("Quantas refeições você deseja ter por dia?"));
+					int periodo = (int) Sessao.getInstance().getUsuario().getInicio().until(Sessao.getInstance().getUsuario().getFim(), ChronoUnit.DAYS);
+					Dieta dieta = new Dieta(qntRef, periodo);
+					Sessao.getInstance().getUsuario().setDieta(dieta);
 					DietaFrame frame = new DietaFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {

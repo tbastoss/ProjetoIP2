@@ -39,6 +39,14 @@ public class UsuarioComum extends Usuario {
 	public void setAltura(double altura) {
 		this.altura = altura;
 	}
+	
+	public LocalDate getFim() {
+		return fim;
+	}
+
+	public LocalDate getInicio() {
+		return inicio;
+	}
 
 	public void setPeso(double peso) {
 		this.peso = peso;

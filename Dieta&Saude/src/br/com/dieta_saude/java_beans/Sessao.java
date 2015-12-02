@@ -15,4 +15,7 @@ public class Sessao {
 	public void setUsuario(Usuario usuario){
 		this.usuario = usuario;
 	}
+	public UsuarioComum getUsuario(){
+		return (UsuarioComum) usuario;
+	}
 }

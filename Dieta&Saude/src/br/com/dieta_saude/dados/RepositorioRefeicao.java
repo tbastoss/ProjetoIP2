@@ -3,7 +3,7 @@ package br.com.dieta_saude.dados;
 import br.com.dieta_saude.java_beans.Refeicao;
 
 public class RepositorioRefeicao extends RepositorioGenerico implements InterfaceRepositorioRefeicao {
-
+	private static RepositorioRefeicao instance;
 	public RepositorioRefeicao(int tamanho) {
 		super((Object[]) new Refeicao[tamanho]);
 
@@ -12,7 +12,11 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 	public void cadastrar(Refeicao refeicao) {
 		super.cadastrar(refeicao);
 	}
-
+	public static RepositorioRefeicao getInstance(){
+	      if (instance == null)
+	         instance = new RepositorioRefeicao(50);
+	      return instance;
+	}
 	public boolean remover(Refeicao refeicaoARemover) {
 		int id = refeicaoARemover.getId();
 		int i = this.procurarIndice(id);

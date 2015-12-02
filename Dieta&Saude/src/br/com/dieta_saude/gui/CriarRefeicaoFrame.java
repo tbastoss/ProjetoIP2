@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import br.com.dieta_saude.dados.ReadTextFile;
 import br.com.dieta_saude.dados.RepositorioAlimento;
+import br.com.dieta_saude.dados.RepositorioRefeicao;
 import br.com.dieta_saude.java_beans.Alimento;
 import br.com.dieta_saude.java_beans.Refeicao;
 
@@ -82,6 +83,7 @@ public class CriarRefeicaoFrame extends JFrame {
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				RepositorioRefeicao.getInstance().cadastrar(ref);
 				JOptionPane.showMessageDialog(null, ref.toString());
 			}
 		});
