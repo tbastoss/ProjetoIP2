@@ -13,6 +13,7 @@ import br.com.dieta_saude.java_beans.UsuarioAdm;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -45,7 +46,7 @@ public class AdmFrame extends JFrame {
 	public AdmFrame() {
 		super("CADASTRO: Adm");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -75,6 +76,8 @@ public class AdmFrame extends JFrame {
 				UsuarioAdm admUser = new UsuarioAdm();
 				admUser.cadastrarAdm(nome.getText(), senha.getText(), 1);
 				RepositorioUsuarioAdm.getInstance().cadastrar(admUser);
+				JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+				AdmFrame.this.dispose();
 			}
 		});
 		btnOk.setBounds(10, 106, 89, 23);

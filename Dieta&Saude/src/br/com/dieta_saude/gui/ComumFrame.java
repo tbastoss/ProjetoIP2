@@ -13,6 +13,7 @@ import br.com.dieta_saude.java_beans.UsuarioComum;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -61,7 +62,7 @@ public class ComumFrame extends JFrame {
 	public ComumFrame() {
 		super("CADASTRO: Usuário Comum");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -174,6 +175,8 @@ public class ComumFrame extends JFrame {
 				UsuarioComum comumUser = new UsuarioComum(nome.getText(), senha.getText(), sexo2, Double.parseDouble(altura.getText()), Double.parseDouble(peso.getText()), Integer.parseInt(idade.getText()), Integer.parseInt(nivel), 0, dataInicio, dataFim);
 				comumUser.calcularPontos();
 				RepositorioUsuario.getInstance().cadastrar(comumUser);
+				JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+				ComumFrame.this.dispose();
 			}
 		});
 		btnOk.setBounds(292, 174, 89, 23);
