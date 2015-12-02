@@ -50,21 +50,21 @@ public class AdmPainelFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		nome = new JTextField();
-		nome.setBounds(23, 41, 86, 20);
+		nome.setBounds(211, 100, 86, 20);
 		contentPane.add(nome);
 		nome.setColumns(10);
 		
 		pontos = new JTextField();
-		pontos.setBounds(23, 72, 86, 20);
+		pontos.setBounds(211, 131, 86, 20);
 		contentPane.add(pontos);
 		pontos.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(119, 44, 46, 14);
+		lblNome.setBounds(307, 103, 46, 14);
 		contentPane.add(lblNome);
 		
 		JLabel lblPontos = new JLabel("Pontos");
-		lblPontos.setBounds(119, 75, 46, 14);
+		lblPontos.setBounds(307, 134, 46, 14);
 		contentPane.add(lblPontos);
 		
 		JButton btnAdicionarAlimento = new JButton("Adicionar Alimento");
@@ -75,7 +75,7 @@ public class AdmPainelFrame extends JFrame {
 				con.adicionar(aCadastrar);			
 			}
 		});
-		btnAdicionarAlimento.setBounds(20, 103, 134, 23);
+		btnAdicionarAlimento.setBounds(208, 162, 134, 23);
 		contentPane.add(btnAdicionarAlimento);
 		
 		JButton btnRemoverAlimento = new JButton("Remover Alimento");
@@ -86,7 +86,7 @@ public class AdmPainelFrame extends JFrame {
 				con.remover(aRemover);		
 			}
 		});
-		btnRemoverAlimento.setBounds(20, 129, 134, 23);
+		btnRemoverAlimento.setBounds(208, 188, 134, 23);
 		contentPane.add(btnRemoverAlimento);
 		
 		JButton btnAtualizarAlimento = new JButton("Atualizar Alimento");
@@ -97,7 +97,7 @@ public class AdmPainelFrame extends JFrame {
 				con.atualizar(aAtualizar);	
 			}
 		});
-		btnAtualizarAlimento.setBounds(21, 154, 133, 23);
+		btnAtualizarAlimento.setBounds(209, 213, 133, 23);
 		contentPane.add(btnAtualizarAlimento);
 	}
 }

@@ -47,19 +47,19 @@ public class CadastroFrame extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblCadastro = new JLabel("Cadastro");
-		lblCadastro.setBounds(5, 5, 424, 14);
+		lblCadastro.setBounds(242, 143, 86, 14);
 		contentPane.add(lblCadastro);
 
 		textField = new JTextField();
-		textField.setBounds(5, 42, 86, 20);
+		textField.setBounds(177, 188, 86, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		JLabel lblTipoDeUsurio = new JLabel("Tipo de Usu\u00E1rio:");
-		lblTipoDeUsurio.setBounds(5, 24, 144, 14);
+		JLabel lblTipoDeUsurio = new JLabel("Tipo de Usu\u00E1rio (para comum digite comum, para adm digite o codigo):");
+		lblTipoDeUsurio.setBounds(106, 162, 378, 14);
 		contentPane.add(lblTipoDeUsurio);
 
-		btnOk.setBounds(100, 41, 89, 23);
+		btnOk.setBounds(272, 187, 89, 23);
 		contentPane.add(btnOk);
 		ButtonHandler handler = new ButtonHandler();
 		btnOk.addActionListener(handler);

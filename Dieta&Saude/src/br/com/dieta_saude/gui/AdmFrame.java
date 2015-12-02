@@ -53,21 +53,21 @@ public class AdmFrame extends JFrame {
 		contentPane.setLayout(null);
 
 		nome = new JTextField();
-		nome.setBounds(10, 36, 86, 20);
+		nome.setBounds(275, 128, 86, 20);
 		contentPane.add(nome);
 		nome.setColumns(10);
 
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(106, 39, 46, 14);
+		lblNome.setBounds(219, 131, 46, 14);
 		contentPane.add(lblNome);
 
 		senha = new JTextField();
-		senha.setBounds(10, 67, 86, 20);
+		senha.setBounds(275, 159, 86, 20);
 		contentPane.add(senha);
 		senha.setColumns(10);
 
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(106, 73, 46, 14);
+		lblSenha.setBounds(219, 165, 46, 14);
 		contentPane.add(lblSenha);
 
 		JButton btnOk = new JButton("OK");
@@ -80,7 +80,7 @@ public class AdmFrame extends JFrame {
 				AdmFrame.this.dispose();
 			}
 		});
-		btnOk.setBounds(10, 106, 89, 23);
+		btnOk.setBounds(241, 190, 89, 23);
 		contentPane.add(btnOk);
 	}
 }
