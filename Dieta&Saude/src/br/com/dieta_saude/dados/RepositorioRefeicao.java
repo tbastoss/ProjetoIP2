@@ -66,7 +66,7 @@ public class RepositorioRefeicao extends RepositorioGenerico implements Interfac
 		int i = 0;
 		boolean achou = false;
 		while ((!achou) && (i < this.proxima)) {
-			if (nome == ((Refeicao) this.arrayDeDados[i]).getNome()) {
+			if (nome.equals(((Refeicao) this.arrayDeDados[i]).getNome())) {
 				achou = true;
 			} else {
 				i = i + 1;

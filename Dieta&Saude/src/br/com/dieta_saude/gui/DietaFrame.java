@@ -53,6 +53,8 @@ public class DietaFrame extends JFrame {
 		qntRef = qtdRefeicao;
 		int periodo = (int) Sessao.getInstance().getUsuario().getInicio().until(Sessao.getInstance().getUsuario().getFim(), ChronoUnit.DAYS);
 		dieta = new Dieta(qntRef, periodo);
+		dieta.setPeriodoEmDiasDaDieta(periodo);
+		dieta.setQtdRefeicao(qntRef);
 		Sessao.getInstance().getUsuario().setDieta(dieta);
 		Refeicao refeicao[][] = new Refeicao[dieta.getPeriodoEmDiasDaDieta()][dieta.getQtdRefeicao()];
 		
@@ -77,6 +79,8 @@ public class DietaFrame extends JFrame {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dieta.setRefeicao(refeicao);
+				dieta.setInicioDieta(Sessao.getInstance().getUsuario().getInicio());
+				dieta.setFimDieta(Sessao.getInstance().getUsuario().getFim());
 				JOptionPane.showMessageDialog(null, dieta.toString());
 			}
 		});
@@ -93,8 +97,11 @@ public class DietaFrame extends JFrame {
 				String divComando[] = new String[2];
 				divComando = comboBox.getSelectedItem().toString().split(" ");
 				refeicao[periodoAction][qtdRefeicaoAction] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
+				//JOptionPane.showMessageDialog(null, periodoAction + " "+ refeicao[periodoAction][qtdRefeicaoAction].getPontos() + refeicao[periodoAction][qtdRefeicaoAction].getNome() + " "+qtdRefeicaoAction);
+				dieta.setPontos(refeicao[periodoAction][qtdRefeicaoAction].getPontos());
 				qtdRefeicaoAction++;
-				if (qtdRefeicaoAction == dieta.getQtdRefeicao()){
+				
+				if (qtdRefeicaoAction == (dieta.getQtdRefeicao()-1)){
 					periodoAction++;
 					qtdRefeicaoAction = 0;
 				}

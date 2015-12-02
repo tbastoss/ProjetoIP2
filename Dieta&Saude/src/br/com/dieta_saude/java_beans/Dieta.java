@@ -54,6 +54,10 @@ public class Dieta {
 		return proximoDia;
 	}
 
+	public void setPontos(int pontos) {
+		this.pontos = this.pontos + pontos;
+	}
+
 	public int getId() {
 		return id;
 	}
