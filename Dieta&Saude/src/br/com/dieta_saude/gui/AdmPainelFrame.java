@@ -8,10 +8,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.dieta_saude.controladores.ControladorDeAlimentos;
+import br.com.dieta_saude.excecoes.AlimentoInexistenteException;
+import br.com.dieta_saude.excecoes.CampoVazioException;
 import br.com.dieta_saude.java_beans.Alimento;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -70,9 +73,20 @@ public class AdmPainelFrame extends JFrame {
 		JButton btnAdicionarAlimento = new JButton("Adicionar Alimento");
 		btnAdicionarAlimento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Alimento aCadastrar = new Alimento(nome.getText(), Integer.parseInt(pontos.getText()));
-				ControladorDeAlimentos con = new ControladorDeAlimentos();
-				con.adicionar(aCadastrar);			
+				try{
+					if(nome.getText().equals("")||pontos.getText().equals("")){
+						throw new CampoVazioException();
+					}
+					Alimento aCadastrar = new Alimento(nome.getText(), Integer.parseInt(pontos.getText()));
+					ControladorDeAlimentos con = new ControladorDeAlimentos();
+					if(con.adicionar(aCadastrar) == false){
+						throw new AlimentoInexistenteException();
+					}
+					}catch(CampoVazioException cve){
+						JOptionPane.showMessageDialog(null, cve.getMessage());
+					}catch(AlimentoInexistenteException aie){
+						JOptionPane.showMessageDialog(null, aie.getMessage());
+					}
 			}
 		});
 		btnAdicionarAlimento.setBounds(208, 162, 134, 23);
@@ -81,9 +95,20 @@ public class AdmPainelFrame extends JFrame {
 		JButton btnRemoverAlimento = new JButton("Remover Alimento");
 		btnRemoverAlimento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try{
+					if(nome.getText().equals("")||pontos.getText().equals("")){
+						throw new CampoVazioException();
+					}
 				Alimento aRemover = new Alimento(nome.getText(), Integer.parseInt(pontos.getText()));
 				ControladorDeAlimentos con = new ControladorDeAlimentos();
-				con.remover(aRemover);		
+				if(con.remover(aRemover) == false){
+					throw new AlimentoInexistenteException();
+				}
+				}catch(CampoVazioException cve){
+					JOptionPane.showMessageDialog(null, cve.getMessage());
+				}catch(AlimentoInexistenteException aie){
+					JOptionPane.showMessageDialog(null, aie.getMessage());
+				}
 			}
 		});
 		btnRemoverAlimento.setBounds(208, 188, 134, 23);
@@ -92,9 +117,20 @@ public class AdmPainelFrame extends JFrame {
 		JButton btnAtualizarAlimento = new JButton("Atualizar Alimento");
 		btnAtualizarAlimento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try{
+					if(nome.getText().equals("")||pontos.getText().equals("")){
+						throw new CampoVazioException();
+					}
 				Alimento aAtualizar = new Alimento(nome.getText(), Integer.parseInt(pontos.getText()));
 				ControladorDeAlimentos con = new ControladorDeAlimentos();
-				con.atualizar(aAtualizar);	
+				if(con.atualizar(aAtualizar) == false){
+					throw new AlimentoInexistenteException();
+				}
+				}catch(CampoVazioException cve){
+					JOptionPane.showMessageDialog(null, cve.getMessage());
+				}catch(AlimentoInexistenteException aie){
+					JOptionPane.showMessageDialog(null, aie.getMessage());
+				}
 			}
 		});
 		btnAtualizarAlimento.setBounds(209, 213, 133, 23);

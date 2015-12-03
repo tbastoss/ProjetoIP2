@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import br.com.dieta_saude.dados.RepositorioUsuario;
 import br.com.dieta_saude.dados.RepositorioUsuarioAdm;
+import br.com.dieta_saude.excecoes.CampoVazioException;
 import br.com.dieta_saude.java_beans.UsuarioAdm;
 
 import javax.swing.JTextField;
@@ -73,11 +74,18 @@ public class AdmFrame extends JFrame {
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UsuarioAdm admUser = new UsuarioAdm();
-				admUser.cadastrarAdm(nome.getText(), senha.getText(), 1);
-				RepositorioUsuarioAdm.getInstance().cadastrar(admUser);
-				JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-				AdmFrame.this.dispose();
+				try{
+					if(nome.getText().equals("") || senha.getText().equals("")){
+						throw new CampoVazioException();
+					}
+					UsuarioAdm admUser = new UsuarioAdm();
+					admUser.cadastrarAdm(nome.getText(), senha.getText(), 1);
+					RepositorioUsuarioAdm.getInstance().cadastrar(admUser);
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+					AdmFrame.this.dispose();
+				}catch(CampoVazioException cvz){
+					JOptionPane.showMessageDialog(null, cvz.getMessage());
+				}
 			}
 		});
 		btnOk.setBounds(241, 190, 89, 23);

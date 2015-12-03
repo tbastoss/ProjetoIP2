@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import br.com.dieta_saude.dados.RepositorioUsuario;
+import br.com.dieta_saude.excecoes.CampoVazioException;
+import br.com.dieta_saude.excecoes.NumeroInvalidoException;
 import br.com.dieta_saude.java_beans.UsuarioComum;
 
 import javax.swing.JTextField;
@@ -18,6 +20,7 @@ import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.awt.event.ActionEvent;
 
@@ -169,16 +172,32 @@ public class ComumFrame extends JFrame {
 		btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nivel = nivelSedentarismo.getSelectedItem().toString();
-				DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-				LocalDate dataFim = LocalDate.parse(periodo.getText(), fmt);
-				LocalDate dataInicio = LocalDate.now();
-				
-				UsuarioComum comumUser = new UsuarioComum(nome.getText(), senha.getText(), sexo2, Double.parseDouble(altura.getText()), Double.parseDouble(peso.getText()), Integer.parseInt(idade.getText()), Integer.parseInt(nivel), 0, dataInicio, dataFim);
-				comumUser.calcularPontos();
-				RepositorioUsuario.getInstance().cadastrar(comumUser);
-				JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-				ComumFrame.this.dispose();
+				try{
+					if(nome.getText().equals("") ||senha.getText().equals("") ||altura.getText().equals("") ||peso.getText().equals("") ||idade.getText().equals("")||periodo.getText().equals("") ){
+						throw new CampoVazioException();
+					}
+					if(Integer.parseInt(altura.getText())<0 || Integer.parseInt(peso.getText())<0 || Integer.parseInt(idade.getText())<0){
+						throw new NumeroInvalidoException();
+					}
+					String nivel = nivelSedentarismo.getSelectedItem().toString();
+					DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+					LocalDate dataFim = LocalDate.parse(periodo.getText(), fmt);
+					LocalDate dataInicio = LocalDate.now();
+					
+					UsuarioComum comumUser = new UsuarioComum(nome.getText(), senha.getText(), sexo2, Double.parseDouble(altura.getText()), Double.parseDouble(peso.getText()), Integer.parseInt(idade.getText()), Integer.parseInt(nivel), 0, dataInicio, dataFim);
+					comumUser.calcularPontos();
+					RepositorioUsuario.getInstance().cadastrar(comumUser);
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+					ComumFrame.this.dispose();
+				}catch(CampoVazioException ce){
+					JOptionPane.showMessageDialog(null, ce.getMessage());
+				}catch(DateTimeParseException dte){
+					JOptionPane.showMessageDialog(null, "Insira a data no formato dd/mm/aaaa!");
+				}catch(NumberFormatException nfe){
+					JOptionPane.showMessageDialog(null, "Insira apenas números nos campos: altura, peso, idade!");
+				}catch(NumeroInvalidoException nie){
+					JOptionPane.showMessageDialog(null, nie.getMessage());
+				}
 			}
 		});
 		btnOk.setBounds(10, 222, 89, 23);

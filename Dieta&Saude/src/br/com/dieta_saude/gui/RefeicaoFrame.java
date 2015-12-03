@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import br.com.dieta_saude.excecoes.NumeroInvalidoException;
+
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
@@ -56,9 +59,18 @@ public class RefeicaoFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton("Montar dieta");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try{
 				int qntRef = Integer.parseInt(JOptionPane.showInputDialog("Quantas refeições você deseja ter por dia?"));
+				if(qntRef <=0){
+					throw new NumeroInvalidoException();
+				}
 				DietaFrame df = new DietaFrame(qntRef);
 				df.setVisible(true);
+				}catch(NumberFormatException nfe){
+					JOptionPane.showMessageDialog(null, "Insira apenas números!");
+				}catch(NumeroInvalidoException nie){
+					JOptionPane.showMessageDialog(null, "Insira apenas números positivos!");
+				}
 			}
 		});
 		btnNewButton_1.setBounds(233, 66, 114, 48);

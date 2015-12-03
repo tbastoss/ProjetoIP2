@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import br.com.dieta_saude.controladores.ControladorDeUsuario;
 import br.com.dieta_saude.dados.RepositorioUsuario;
 import br.com.dieta_saude.dados.RepositorioUsuarioAdm;
+import br.com.dieta_saude.excecoes.CampoVazioException;
+import br.com.dieta_saude.excecoes.UsuarioInexistenteException;
 import br.com.dieta_saude.java_beans.Sessao;
 import br.com.dieta_saude.java_beans.Usuario;
 import br.com.dieta_saude.java_beans.UsuarioAdm;
@@ -68,7 +70,11 @@ public class LoginFrame extends JFrame {
 		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControladorDeUsuario controlador = new ControladorDeUsuario();
+				try{
+					if(nome.getText().equals("")|| senha.getText().equals("")){
+						throw new CampoVazioException();
+					}
+					ControladorDeUsuario controlador = new ControladorDeUsuario();
 					Usuario usuarioComum = RepositorioUsuario.getInstance().procurar(nome.getText(), senha.getText());
 					Usuario usuarioAdm = RepositorioUsuarioAdm.getInstance().procurar(nome.getText(), senha.getText());
 					if(usuarioComum != null){
@@ -83,9 +89,13 @@ public class LoginFrame extends JFrame {
 							AdmPainelFrame adf = new AdmPainelFrame();
 							adf.setVisible(true);
 						}
+					}else{
+						throw new UsuarioInexistenteException();
 					}
-					else{
-						JOptionPane.showMessageDialog(null, "erro");
+					}catch(CampoVazioException cve){
+						JOptionPane.showMessageDialog(null, cve.getMessage());
+					}catch(UsuarioInexistenteException uie){
+						JOptionPane.showMessageDialog(null, uie.getMessage());
 					}
 				}//*/
 		});
