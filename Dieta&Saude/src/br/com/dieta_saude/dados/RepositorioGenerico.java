@@ -1,7 +1,7 @@
 package br.com.dieta_saude.dados;
+import java.io.Serializable;
 
-
-public abstract class RepositorioGenerico {
+public abstract class RepositorioGenerico implements Serializable{
 	
 	protected Object[] arrayDeDados;
 	protected int proxima;
