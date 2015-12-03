@@ -56,7 +56,7 @@ public class CadastroFrame extends JFrame {
 		textField.setColumns(10);
 
 		JLabel lblTipoDeUsurio = new JLabel("Tipo de Usu\u00E1rio (para comum digite comum, para adm digite o codigo):");
-		lblTipoDeUsurio.setBounds(106, 162, 378, 14);
+		lblTipoDeUsurio.setBounds(106, 162, 456, 14);
 		contentPane.add(lblTipoDeUsurio);
 
 		btnOk.setBounds(272, 187, 89, 23);

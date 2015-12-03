@@ -94,7 +94,7 @@ public class DietaFrame extends JFrame {
 		contentPane.add(lblRefeio);
 		
 		pontosDieta = new JLabel("0");
-		pontosDieta.setBounds(158, 166, 76, 14);
+		pontosDieta.setBounds(510, 81, 76, 14);
 		contentPane.add(pontosDieta);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
@@ -113,8 +113,8 @@ public class DietaFrame extends JFrame {
 					String divComando[] = new String[2];
 					divComando = comboBox.getSelectedItem().toString().split(" ");
 					refeicao[periodoAction][qtdRefeicaoAction] = (Refeicao) RepositorioRefeicao.getInstance().procurar(divComando[0]);
-					//JOptionPane.showMessageDialog(null, periodoAction + " "+ refeicao[periodoAction][qtdRefeicaoAction].getPontos() + refeicao[periodoAction][qtdRefeicaoAction].getNome() + " "+qtdRefeicaoAction);
 					dieta.setPontos(refeicao[periodoAction][qtdRefeicaoAction].getPontos());
+					JOptionPane.showMessageDialog(null,"você adiocionou a refeicao (" + refeicao[periodoAction][qtdRefeicaoAction].toString() + ") no dia: " + (periodoAction + 1));
 					qtdRefeicaoAction++;
 					
 				}
@@ -126,19 +126,19 @@ public class DietaFrame extends JFrame {
 					
 			}
 		});
-		btnAdicionar.setBounds(291, 62, 89, 23);
+		btnAdicionar.setBounds(257, 62, 89, 23);
 		contentPane.add(btnAdicionar);
 		
 		JLabel lblSeusPontos = new JLabel("Seus pontos di\u00E1rios:");
-		lblSeusPontos.setBounds(30, 135, 102, 20);
+		lblSeusPontos.setBounds(366, 50, 118, 20);
 		contentPane.add(lblSeusPontos);
 		
 		JLabel lblPontosDaDieta = new JLabel("Pontos totais da dieta:");
-		lblPontosDaDieta.setBounds(30, 166, 119, 14);
+		lblPontosDaDieta.setBounds(366, 81, 145, 14);
 		contentPane.add(lblPontosDaDieta);
 		
 		pontosUsuario = new JLabel(String.valueOf(Sessao.getInstance().getUsuario().getPontos()));
-		pontosUsuario.setBounds(158, 138, 76, 14);
+		pontosUsuario.setBounds(510, 53, 76, 14);
 		contentPane.add(pontosUsuario);
 	}
 }
