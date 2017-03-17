@@ -18,7 +18,7 @@ import br.com.dieta_saude.java_beans.UsuarioAdm;
 import br.com.dieta_saude.java_beans.UsuarioComum;
 import br.com.dieta_saude.controladores.ControladorDeAlimentos;
 import br.com.dieta_saude.controladores.ControladorDeUsuario;
-
+//NAO ESTA PEGANDO ESSA MERDA :D
 /*
  * O calculo do periodoEmDiasDaDieta deve ser feito direto na main para quando for criar o objeto do
  * tipo dieta, já passar o periodo, no mais so precisa passar as datas para o objeto, através dos 
